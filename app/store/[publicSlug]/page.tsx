@@ -184,7 +184,7 @@ export default function StorePage() {
       page instead.
     */
 
-    router.push(
+    router.replace(
   `/order-success?order=${encodeURIComponent(
     order.id
   )}&vendor=${encodeURIComponent(
