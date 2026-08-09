@@ -1,4 +1,4 @@
-```tsx
+
 "use client";
 
 import { useSearchParams } from "next/navigation";
@@ -182,4 +182,4 @@ const styles: Record<string, React.CSSProperties> = {
     marginTop: "22px",
   },
 };
-```
+
