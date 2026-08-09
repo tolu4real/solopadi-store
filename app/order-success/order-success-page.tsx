@@ -16,13 +16,12 @@ export default function OrderSuccessPage() {
   return (
     <main style={styles.page}>
       <div style={styles.card}>
-
         <div style={styles.checkCircle}>
           ✓
         </div>
 
         <h1 style={styles.title}>
-          Order Confirmed!
+          Order Submitted!
         </h1>
 
         <p style={styles.subtitle}>
@@ -53,16 +52,29 @@ export default function OrderSuccessPage() {
             </strong>
 
             <p style={styles.message}>
-              The vendor will review your order and
-              arrange delivery.
+              The vendor will review your order
+              and arrange delivery.
             </p>
 
             <p style={styles.message}>
-              After your order has been delivered,
+              After your order is on the way,
               you will receive a link to confirm
-              receipt.
+              receipt after delivery.
             </p>
           </div>
+        </div>
+
+        <div style={styles.infoBox}>
+          <div style={styles.infoIcon}>
+            🔒
+          </div>
+
+          <p style={styles.infoText}>
+            You do not need the SoloPadi app to
+            confirm your order. Your confirmation
+            link can be opened directly from your
+            phone.
+          </p>
         </div>
 
         <p style={styles.footer}>
@@ -71,7 +83,6 @@ export default function OrderSuccessPage() {
             SoloPadi
           </strong>
         </p>
-
       </div>
     </main>
   );
@@ -93,7 +104,7 @@ const styles: Record<string, React.CSSProperties> = {
   card: {
     width: "100%",
     maxWidth: "500px",
-    background: "#fff",
+    background: "#FFFFFF",
     borderRadius: "28px",
     padding: "38px 26px",
     textAlign: "center",
@@ -157,7 +168,7 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#F8FAFC",
     borderRadius: "16px",
     padding: "17px",
-    marginBottom: "22px",
+    marginBottom: "16px",
   },
 
   messageIcon: {
@@ -176,10 +187,33 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "5px 0 0",
   },
 
+  infoBox: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "10px",
+    textAlign: "left",
+    background: "#F0FDF4",
+    border:
+      "1px solid #BBF7D0",
+    borderRadius: "14px",
+    padding: "14px",
+    marginTop: "4px",
+  },
+
+  infoIcon: {
+    fontSize: "20px",
+  },
+
+  infoText: {
+    color: "#475569",
+    fontSize: "12px",
+    lineHeight: "1.5",
+    margin: "0",
+  },
+
   footer: {
     color: "#94A3B8",
     fontSize: "12px",
     marginTop: "22px",
   },
 };
-
