@@ -649,19 +649,21 @@ function Field({
 }: FieldProps) {
   return (
     <div style={styles.fieldWrapper}>
-      <label style={styles.label}>
-        <span style={styles.labelIcon}>
-          {icon}
-        </span>
 
-        <span>{label}</span>
 
-        {required && (
-          <span style={styles.required}>
-            *
-          </span>
-        )}
-      </label>
+
+
+    <label style={styles.label}>
+  <span>{label}</span>
+
+  {required && (
+    <span style={styles.required}>
+      *
+    </span>
+  )}
+</label>
+
+
 
       <div style={styles.inputWrapper}>
         <span style={styles.inputIcon}>
