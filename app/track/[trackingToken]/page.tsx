@@ -14,6 +14,7 @@ type TrackingOrder = {
   picked_up_at: string | null;
   delivered_at: string | null;
   completed_at: string | null;
+  rejected_at: string | null;
 };
 
 type TrackingResponse = {
@@ -28,6 +29,7 @@ type TrackingStep = {
   time: string | null;
   completed: boolean;
   current: boolean;
+  rejected?: boolean;
 };
 
 export default function TrackingPage() {
@@ -55,6 +57,9 @@ export default function TrackingPage() {
         p_tracking_token: trackingToken,
       }
     );
+
+    console.log("TRACKING RPC DATA:", data);
+    console.log("TRACKING RPC ERROR:", error);
 
     if (error) {
       console.error("Tracking error:", error);
@@ -89,7 +94,7 @@ export default function TrackingPage() {
       <main style={styles.page}>
         <div style={styles.loadingCard}>
           <div style={styles.loadingLogo}>
-            <span> S </span>
+            <span>S</span>
           </div>
 
           <div style={styles.spinner} />
@@ -147,6 +152,7 @@ export default function TrackingPage() {
     : "Order";
 
   const completed = order.order_status === "Completed";
+  const rejected = order.order_status === "Rejected";
 
   return (
     <main style={styles.page}>
@@ -192,12 +198,17 @@ export default function TrackingPage() {
                 ...(completed
                   ? styles.statusBadgeCompleted
                   : {}),
+                ...(rejected
+                  ? styles.statusBadgeRejected
+                  : {}),
               }}
             >
               <span style={styles.statusDot} />
 
               {completed
                 ? "Completed"
+                : rejected
+                ? "Rejected"
                 : getCurrentStatus(order)}
             </div>
           </div>
@@ -218,13 +229,21 @@ export default function TrackingPage() {
               </h2>
 
               <p style={styles.sectionSubtitle}>
-                Follow your order from placement
-                to completion.
+                {rejected
+                  ? "This order was not accepted by the store."
+                  : "Follow your order from placement to completion."}
               </p>
             </div>
 
-            <div style={styles.progressIcon}>
-              ✓
+            <div
+              style={{
+                ...styles.progressIcon,
+                ...(rejected
+                  ? styles.progressIconRejected
+                  : {}),
+              }}
+            >
+              {rejected ? "!" : "✓"}
             </div>
           </div>
 
@@ -261,6 +280,33 @@ export default function TrackingPage() {
                 <div style={styles.completedTime}>
                   Completed{" "}
                   {formatDate(order.completed_at)}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* REJECTED MESSAGE */}
+
+        {rejected && (
+          <section style={styles.rejectedCard}>
+            <div style={styles.rejectedIcon}>
+              !
+            </div>
+
+            <div>
+              <h3 style={styles.rejectedTitle}>
+                Order Rejected
+              </h3>
+
+              <p style={styles.rejectedText}>
+                The store did not accept this order.
+              </p>
+
+              {order.rejected_at && (
+                <div style={styles.rejectedTime}>
+                  Rejected{" "}
+                  {formatDate(order.rejected_at)}
                 </div>
               )}
             </div>
@@ -314,23 +360,38 @@ function TrackingStep({
         <div
           style={{
             ...styles.stepCircle,
-            ...(step.completed
+
+            ...(step.completed && !step.rejected
               ? styles.stepCircleCompleted
               : {}),
+
+            ...(step.rejected
+              ? styles.stepCircleRejected
+              : {}),
+
             ...(step.current
               ? styles.stepCircleCurrent
               : {}),
           }}
         >
-          {step.completed ? "✓" : ""}
+          {step.rejected
+            ? "✕"
+            : step.completed
+            ? "✓"
+            : ""}
         </div>
 
         {!last && (
           <div
             style={{
               ...styles.connector,
-              ...(step.completed
+
+              ...(step.completed && !step.rejected
                 ? styles.connectorCompleted
+                : {}),
+
+              ...(step.rejected
+                ? styles.connectorRejected
                 : {}),
             }}
           />
@@ -344,8 +405,13 @@ function TrackingStep({
           <h3
             style={{
               ...styles.stepTitle,
-              ...(step.completed
+
+              ...(step.completed && !step.rejected
                 ? styles.stepTitleCompleted
+                : {}),
+
+              ...(step.rejected
+                ? styles.stepTitleRejected
                 : {}),
             }}
           >
@@ -353,7 +419,15 @@ function TrackingStep({
           </h3>
 
           {step.time && (
-            <span style={styles.stepTime}>
+            <span
+              style={{
+                ...styles.stepTime,
+
+                ...(step.rejected
+                  ? styles.stepTimeRejected
+                  : {}),
+              }}
+            >
               {formatDate(step.time)}
             </span>
           )}
@@ -376,6 +450,29 @@ function buildTrackingSteps(
   order: TrackingOrder
 ): TrackingStep[] {
   const placed = !!order.created_at;
+
+  // Rejected orders have their own short timeline.
+  if (order.order_status === "Rejected") {
+    return [
+      {
+        title: "Order Placed",
+        description:
+          "Your order was received by the store.",
+        time: order.created_at,
+        completed: placed,
+        current: false,
+      },
+      {
+        title: "Order Rejected",
+        description:
+          "The store was unable to accept this order.",
+        time: order.rejected_at,
+        completed: !!order.rejected_at,
+        current: false,
+        rejected: true,
+      },
+    ];
+  }
 
   const confirmed =
     order.order_status === "Accepted" ||
@@ -411,55 +508,40 @@ function buildTrackingSteps(
         "Your order has been received by the store.",
       time: order.created_at,
       completed: placed,
-      current:
-        placed &&
-        !confirmed,
+      current: placed && !confirmed,
     },
-
     {
       title: "Order Confirmed",
       description:
         "The vendor has accepted your order.",
       time: order.accepted_at,
       completed: confirmed,
-      current:
-        confirmed &&
-        !ready,
+      current: confirmed && !ready,
     },
-
     {
       title: "Ready for Delivery",
       description:
         "Your order has been assigned for delivery.",
       time: order.assigned_at,
       completed: ready,
-      current:
-        ready &&
-        !inTransit,
+      current: ready && !inTransit,
     },
-
     {
       title: "In Transit",
       description:
         "Your order is on its way to you.",
       time: order.picked_up_at,
       completed: inTransit,
-      current:
-        inTransit &&
-        !delivered,
+      current: inTransit && !delivered,
     },
-
     {
       title: "Delivered",
       description:
         "Your order has been delivered.",
       time: order.delivered_at,
       completed: delivered,
-      current:
-        delivered &&
-        !completed,
+      current: delivered && !completed,
     },
-
     {
       title: "Completed",
       description:
@@ -656,6 +738,11 @@ const styles: Record<
     color: "#166534",
   },
 
+  statusBadgeRejected: {
+    background: "#FEE2E2",
+    color: "#B91C1C",
+  },
+
   statusDot: {
     width: "7px",
     height: "7px",
@@ -714,6 +801,11 @@ const styles: Record<
     fontWeight: "900",
   },
 
+  progressIconRejected: {
+    background: "#FEE2E2",
+    color: "#DC2626",
+  },
+
   timeline: {
     width: "100%",
   },
@@ -752,6 +844,12 @@ const styles: Record<
     borderColor: "#16A34A",
   },
 
+  stepCircleRejected: {
+    background: "#DC2626",
+    borderColor: "#DC2626",
+    color: "#FFFFFF",
+  },
+
   stepCircleCurrent: {
     boxShadow:
       "0 0 0 5px #DCFCE7",
@@ -766,6 +864,10 @@ const styles: Record<
 
   connectorCompleted: {
     background: "#86EFAC",
+  },
+
+  connectorRejected: {
+    background: "#FCA5A5",
   },
 
   stepContent: {
@@ -792,6 +894,10 @@ const styles: Record<
     color: "#111827",
   },
 
+  stepTitleRejected: {
+    color: "#B91C1C",
+  },
+
   stepDescription: {
     margin: "5px 0 0",
     color: "#94A3B8",
@@ -803,6 +909,11 @@ const styles: Record<
     color: "#64748B",
     fontSize: "10px",
     whiteSpace: "nowrap",
+  },
+
+  stepTimeRejected: {
+    color: "#B91C1C",
+    fontWeight: "700",
   },
 
   completedCard: {
@@ -847,6 +958,52 @@ const styles: Record<
   completedTime: {
     marginTop: "7px",
     color: "#166534",
+    fontSize: "11px",
+    fontWeight: "700",
+  },
+
+  rejectedCard: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "13px",
+    background: "#FEF2F2",
+    border:
+      "1px solid #FECACA",
+    borderRadius: "20px",
+    padding: "17px",
+    marginTop: "16px",
+  },
+
+  rejectedIcon: {
+    width: "32px",
+    height: "32px",
+    borderRadius: "50%",
+    background: "#DC2626",
+    color: "#FFFFFF",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: "900",
+    flexShrink: 0,
+  },
+
+  rejectedTitle: {
+    margin: "1px 0 4px",
+    color: "#B91C1C",
+    fontSize: "14px",
+    fontWeight: "900",
+  },
+
+  rejectedText: {
+    margin: "0",
+    color: "#64748B",
+    fontSize: "12px",
+    lineHeight: "1.5",
+  },
+
+  rejectedTime: {
+    marginTop: "7px",
+    color: "#B91C1C",
     fontSize: "11px",
     fontWeight: "700",
   },
