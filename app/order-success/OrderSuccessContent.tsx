@@ -8,6 +8,7 @@ export default function OrderSuccessPage() {
 
   const orderId = searchParams.get("order");
   const vendor = searchParams.get("vendor");
+  const trackingToken = searchParams.get("tracking");
 
   const reference = orderId
     ? orderId.slice(-8).toUpperCase()
@@ -40,6 +41,18 @@ export default function OrderSuccessPage() {
             </strong>
           </div>
         )}
+
+        {trackingToken && (
+  <button
+    type="button"
+    onClick={() => {
+      window.location.href = `/track/${trackingToken}`;
+    }}
+    style={styles.trackButton}
+  >
+    Track Your Order
+  </button>
+)}
 
         <div style={styles.messageBox}>
           <div style={styles.messageIcon}>
@@ -100,6 +113,22 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily:
       "Arial, Helvetica, sans-serif",
   },
+
+
+
+trackButton: {
+  width: "100%",
+  border: "none",
+  borderRadius: "16px",
+  padding: "16px",
+  background: "#16A34A",
+  color: "#FFFFFF",
+  fontSize: "16px",
+  fontWeight: "800",
+  cursor: "pointer",
+  marginBottom: "20px",
+},
+
 
   card: {
     width: "100%",

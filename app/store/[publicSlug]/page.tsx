@@ -149,8 +149,9 @@ export default function StorePage() {
 
           note: note.trim(),
         })
-        .select("id")
-        .single();
+        
+        .select("id, tracking_token")
+         .single();
 
     if (orderError) {
       console.error(
@@ -189,8 +190,13 @@ export default function StorePage() {
     order.id
   )}&vendor=${encodeURIComponent(
     vendor.business_name
+  )}&tracking=${encodeURIComponent(
+    order.tracking_token
   )}`
 );
+
+
+
   }
 
   const orderAmount = Number(amount) || 0;
