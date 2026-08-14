@@ -132,7 +132,7 @@ export default function Home() {
             fontSize: "13px",
           }}
         >
-          Contact: solopadi@gmail.com
+          Contact: admin.solopadi@gmail.com
         </p>
       </div>
     </main>

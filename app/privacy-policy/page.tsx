@@ -63,7 +63,7 @@ const sections = [
   },
   {
     title: "15. Your Privacy Rights and Choices",
-    text: "Depending on applicable law, you may have rights concerning your personal information, including the right to request access to information we hold about you, request correction of inaccurate information, request deletion of certain information, or raise concerns about how your information is handled. You may use available account controls or contact us at solopadi@gmail.com. We may need to verify your identity before processing certain requests.",
+    text: "Depending on applicable law, you may have rights concerning your personal information, including the right to request access to information we hold about you, request correction of inaccurate information, request deletion of certain information, or raise concerns about how your information is handled. You may use available account controls or contact us at admin.solopadi@gmail.com. We may need to verify your identity before processing certain requests.",
   },
   {
     title: "16. Children",
@@ -87,7 +87,7 @@ const sections = [
   },
   {
     title: "21. Contact Us",
-    text: "If you have questions about this Privacy Policy, want to exercise an applicable privacy right, need assistance with account deletion or have a privacy concern, please contact SoloPadi at solopadi@gmail.com.",
+    text: "If you have questions about this Privacy Policy, want to exercise an applicable privacy right, need assistance with account deletion or have a privacy concern, please contact SoloPadi at admin.solopadi@gmail.com.",
   },
 ];
 
@@ -143,10 +143,10 @@ export default function PrivacyPolicyPage() {
             <p className="mt-3 text-sm text-slate-500">
               Contact:{" "}
               <a
-                href="mailto:solopadi@gmail.com"
+                href="mailto:admin.solopadi@gmail.com"
                 className="font-semibold text-green-600 hover:underline"
               >
-                solopadi@gmail.com
+                admin.solopadi@gmail.com
               </a>
             </p>
           </div>

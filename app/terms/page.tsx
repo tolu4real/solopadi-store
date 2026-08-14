@@ -111,7 +111,7 @@ const sections = [
   },
   {
     title: "27. Contact Us",
-    text: "If you have questions, concerns or requests relating to these Terms of Service, please contact SoloPadi at solopadi@gmail.com.",
+    text: "If you have questions, concerns or requests relating to these Terms of Service, please contact SoloPadi at admin.solopadi@gmail.com.",
   },
 ];
 
@@ -166,10 +166,10 @@ export default function TermsPage() {
             <p className="mt-3 text-sm text-slate-500">
               Contact:{" "}
               <a
-                href="mailto:solopadi@gmail.com"
+                href="mailto:admin.solopadi@gmail.com"
                 className="font-semibold text-green-600 hover:underline"
               >
-                solopadi@gmail.com
+                admin.solopadi@gmail.com
               </a>
             </p>
 
