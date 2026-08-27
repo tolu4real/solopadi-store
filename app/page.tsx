@@ -523,17 +523,6 @@ export default function Home() {
       </div>
     </div>
 
-    {/* TRACKING */}
-    <div className={styles.productPhoneFrame}>
-      <div className={styles.productPhoneScreen}>
-        <img
-          src="/screenshots/tracking.png"
-          alt="SoloPadi order tracking screen"
-          className={styles.productPhoneImage}
-        />
-      </div>
-    </div>
-
   </div>
 
 </div>
