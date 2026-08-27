@@ -120,7 +120,7 @@ export default function Home() {
       </div>
 
       <div className={styles.browserAddress}>
-        app.solopadi.com
+        app.solopadi.com.ng
       </div>
     </div>
 
@@ -830,7 +830,7 @@ export default function Home() {
           </div>
 
           <div className={styles.customerBrowserAddress}>
-            solopadi.com/track/your-order
+            solopadi.com.ng/track/your-order
           </div>
 
         </div>
@@ -1488,10 +1488,10 @@ export default function Home() {
         </p>
 
         <a
-          href="mailto:admin.solopadi@gmail.com"
+          href="mailto:admin@solopadi.com.ng"
           className={styles.footerEmail}
         >
-          admin.solopadi@gmail.com
+          admin@solopadi.com.ng
         </a>
 
       </div>
@@ -1534,7 +1534,7 @@ export default function Home() {
           About SoloPadi
         </a>
 
-        <a href="mailto:admin.solopadi@gmail.com">
+        <a href="mailto:admin@solopadi.com.ng">
           Contact
         </a>
 
