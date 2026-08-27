@@ -1460,12 +1460,19 @@ export default function Home() {
       </div>
 
       <a
-        href="#apply"
-        className={styles.footerCtaButton}
-      >
-        Join the Early Merchant Programme
-        <span>↗</span>
-      </a>
+  href="#apply"
+  className={styles.footerCtaButton}
+>
+  <span className={styles.ctaDesktop}>
+    Join the Early Merchant Programme
+  </span>
+
+  <span className={styles.ctaMobile}>
+    Join Early Access
+  </span>
+
+  <span className={styles.ctaArrow}>↗</span>
+</a>
 
     </div>
 

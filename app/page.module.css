@@ -5468,4 +5468,34 @@
     gap: 8px;
   }
 
+}.ctaMobile {
+  display: none;
+}
+
+.ctaDesktop {
+  display: inline;
+}
+
+.ctaArrow {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 600px) {
+  .ctaDesktop {
+    display: none;
+  }
+
+  .ctaMobile {
+    display: inline;
+  }
+
+  .footerCtaButton {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 14px 18px;
+    font-size: 12px;
+    line-height: 1.2;
+    gap: 8px;
+  }
 }
