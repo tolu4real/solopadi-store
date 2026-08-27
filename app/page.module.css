@@ -4337,16 +4337,18 @@
 
   display: grid;
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   align-items: center;
 
-  gap: 28px;
+  justify-content: center;
 
-  width: 100%;
+  gap: 55px;
+
+  width: min(760px, 100%);
+
+  margin: 0 auto;
 }
-
 
 /* =========================================================
    PREMIUM PHONE FRAME
@@ -4356,7 +4358,7 @@
   position: relative;
 
   width: 100%;
-  max-width: 300px;
+  max-width: 310px;
 
   margin: 0 auto;
 
