@@ -4220,6 +4220,533 @@
 }
 
 
+/* =========================================================
+   PRODUCT REVEAL
+   PREMIUM SOLOPADI PRODUCT SHOWCASE
+   ========================================================= */
+
+.productSection {
+  position: relative;
+  padding: 165px 5vw 150px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.productInner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   PRODUCT HEADING
+   ========================================================= */
+
+.productHeading {
+  max-width: 850px;
+}
+
+.productKicker {
+  color: #168a40;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.productTitle {
+  margin: 22px 0 0;
+  max-width: 900px;
+
+  color: #101510;
+
+  font-size: clamp(52px, 6.5vw, 88px);
+  line-height: 0.96;
+  letter-spacing: -0.068em;
+  font-weight: 820;
+}
+
+.productTitle span {
+  color: #8a948d;
+}
+
+.productDescription {
+  max-width: 650px;
+  margin: 30px 0 0;
+
+  color: #68736b;
+
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   PRODUCT SHOWCASE
+   ========================================================= */
+
+.productShowcase {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 90px;
+  padding: 35px 0 70px;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   PREMIUM AMBIENT GLOW
+   ========================================================= */
+
+.productGlow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 75%;
+  height: 70%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(22, 163, 74, 0.13) 0%,
+      rgba(22, 163, 74, 0.055) 35%,
+      transparent 72%
+    );
+
+  filter: blur(45px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   THREE PRODUCT SCREENS
+   ========================================================= */
+
+.productScreensGrid {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  align-items: center;
+
+  gap: 28px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   PREMIUM PHONE FRAME
+   ========================================================= */
+
+.productPhoneFrame {
+  position: relative;
+
+  width: 100%;
+  max-width: 300px;
+
+  margin: 0 auto;
+
+  padding: 7px;
+
+  border: 1px solid rgba(15, 25, 18, 0.16);
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f3f6f4 45%,
+      #e0e6e2 100%
+    );
+
+  box-shadow:
+    0 35px 75px rgba(10, 20, 13, 0.15),
+    0 15px 35px rgba(10, 20, 13, 0.08),
+    0 4px 12px rgba(10, 20, 13, 0.05);
+
+  transform:
+    perspective(1400px)
+    rotateY(-2deg)
+    translateY(0);
+
+  transition:
+    transform 450ms ease,
+    box-shadow 450ms ease;
+
+  box-sizing: border-box;
+}
+
+
+/* Middle screen slightly elevated */
+
+.productPhoneFrame:nth-child(2) {
+  transform:
+    perspective(1400px)
+    rotateY(0deg)
+    translateY(-18px);
+
+  box-shadow:
+    0 45px 90px rgba(10, 20, 13, 0.18),
+    0 18px 40px rgba(10, 20, 13, 0.09),
+    0 5px 14px rgba(10, 20, 13, 0.05);
+}
+
+
+/* Third screen */
+
+.productPhoneFrame:nth-child(3) {
+  transform:
+    perspective(1400px)
+    rotateY(2deg)
+    translateY(0);
+}
+
+
+/* =========================================================
+   PHONE HOVER EFFECT
+   ========================================================= */
+
+.productPhoneFrame:hover {
+  transform:
+    perspective(1400px)
+    rotateY(0deg)
+    translateY(-10px);
+
+  box-shadow:
+    0 50px 100px rgba(10, 20, 13, 0.20),
+    0 22px 48px rgba(10, 20, 13, 0.11),
+    0 7px 18px rgba(10, 20, 13, 0.06);
+}
+
+.productPhoneFrame:nth-child(2):hover {
+  transform:
+    perspective(1400px)
+    rotateY(0deg)
+    translateY(-28px);
+}
+
+
+/* =========================================================
+   PHONE SCREEN
+   ========================================================= */
+
+.productPhoneScreen {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  background: #ffffff;
+
+  line-height: 0;
+}
+
+
+/* =========================================================
+   SCREEN IMAGE
+   ========================================================= */
+
+.productPhoneImage {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-width: 100%;
+
+  border-radius: 25px;
+
+  object-fit: contain;
+
+  vertical-align: middle;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   SUBTLE SCREEN LIGHT
+   ========================================================= */
+
+.productPhoneScreen::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.10),
+      transparent 24%,
+      transparent 76%,
+      rgba(255, 255, 255, 0.025)
+    );
+}
+
+
+/* =========================================================
+   PRODUCT FOOTNOTE
+   ========================================================= */
+
+.productFootnote {
+  display: grid;
+
+  grid-template-columns: 50px minmax(0, 1fr);
+
+  gap: 25px;
+
+  max-width: 620px;
+
+  margin: 60px 0 0 auto;
+
+  padding-top: 24px;
+
+  border-top: 1px solid #e5e9e6;
+}
+
+.productFootnote > span {
+  color: #168a40;
+
+  font-size: 11px;
+  font-weight: 850;
+
+  letter-spacing: 0.1em;
+}
+
+.productFootnote p {
+  margin: 0;
+
+  color: #778179;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .productSection {
+    padding: 135px 5vw 125px;
+  }
+
+  .productShowcase {
+    margin-top: 75px;
+    padding-bottom: 55px;
+  }
+
+  .productScreensGrid {
+    gap: 20px;
+  }
+
+  .productPhoneFrame {
+    max-width: 270px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .productScreensGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .productPhoneFrame {
+    max-width: 235px;
+    padding: 5px;
+
+    border-radius: 27px;
+  }
+
+  .productPhoneScreen,
+  .productPhoneImage {
+    border-radius: 22px;
+  }
+
+  .productPhoneFrame:nth-child(2) {
+    transform:
+      perspective(1200px)
+      translateY(-10px);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .productSection {
+    padding: 105px 18px 105px;
+  }
+
+  .productHeading {
+    max-width: 100%;
+  }
+
+  .productTitle {
+    font-size: clamp(43px, 12vw, 62px);
+  }
+
+  .productDescription {
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .productShowcase {
+    margin-top: 55px;
+    padding: 20px 0 45px;
+  }
+
+  /*
+     IMPORTANT:
+     Stack the three screenshots vertically on phones.
+     This prevents the screenshots from becoming tiny,
+     overflowing, or being cropped horizontally.
+  */
+
+  .productScreensGrid {
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+
+    width: 100%;
+  }
+
+  .productPhoneFrame,
+  .productPhoneFrame:nth-child(2),
+  .productPhoneFrame:nth-child(3) {
+
+    width: min(285px, 82vw);
+
+    max-width: 285px;
+
+    margin: 0 auto;
+
+    padding: 6px;
+
+    border-radius: 29px;
+
+    transform: none;
+
+    box-shadow:
+      0 30px 65px rgba(10, 20, 13, 0.15),
+      0 12px 28px rgba(10, 20, 13, 0.08);
+  }
+
+  .productPhoneFrame:hover,
+  .productPhoneFrame:nth-child(2):hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+      0 38px 75px rgba(10, 20, 13, 0.17),
+      0 15px 32px rgba(10, 20, 13, 0.09);
+  }
+
+  .productPhoneScreen,
+  .productPhoneImage {
+    border-radius: 23px;
+  }
+
+  .productFootnote {
+    grid-template-columns: 35px minmax(0, 1fr);
+
+    gap: 15px;
+
+    margin-top: 45px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .productSection {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .productTitle {
+    font-size: 42px;
+  }
+
+  .productShowcase {
+    margin-top: 48px;
+  }
+
+  .productScreensGrid {
+    gap: 32px;
+  }
+
+  .productPhoneFrame,
+  .productPhoneFrame:nth-child(2),
+  .productPhoneFrame:nth-child(3) {
+
+    width: min(265px, 82vw);
+
+    max-width: 265px;
+
+    padding: 5px;
+
+    border-radius: 26px;
+  }
+
+  .productPhoneScreen,
+  .productPhoneImage {
+    border-radius: 21px;
+  }
+
+  .productFootnote {
+    gap: 12px;
+  }
+
+}
+
+
+
+
+
 
 
 /* =========================================================

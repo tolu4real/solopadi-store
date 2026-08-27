@@ -494,46 +494,52 @@ export default function Home() {
       </p>
     </div>
 
-    {/* REAL PRODUCT SCREENSHOT */}
-    <div className={styles.productShowcase}>
+   {/* REAL PRODUCT SCREENSHOTS */}
+<div className={styles.productShowcase}>
 
-      <div className={styles.productGlow} />
+  <div className={styles.productGlow} />
 
+  <div className={styles.productScreensGrid}>
 
+    {/* ORDERS */}
+    <div className={styles.productPhoneFrame}>
+      <div className={styles.productPhoneScreen}>
+        <img
+          src="/screenshots/orders.png"
+          alt="SoloPadi orders management screen"
+          className={styles.productPhoneImage}
+        />
+      </div>
+    </div>
 
-{/* REAL MOBILE PRODUCT SCREENSHOT */}
-<div className={styles.productPhoneFrame}>
+    {/* RIDER ASSIGNMENT */}
+    <div className={styles.productPhoneFrame}>
+      <div className={styles.productPhoneScreen}>
+        <img
+          src="/screenshots/rider-assignment.png"
+          alt="SoloPadi rider assignment screen"
+          className={styles.productPhoneImage}
+        />
+      </div>
+    </div>
 
-  <div className={styles.productPhoneSpeaker} />
-
-  <div className={styles.productPhoneScreen}>
-
-    <img
-      src="/screenshots/orders.png"
-      alt="SoloPadi orders screen"
-      className={styles.productPhoneImage}
-    />
+    {/* TRACKING */}
+    <div className={styles.productPhoneFrame}>
+      <div className={styles.productPhoneScreen}>
+        <img
+          src="/screenshots/tracking.png"
+          alt="SoloPadi order tracking screen"
+          className={styles.productPhoneImage}
+        />
+      </div>
+    </div>
 
   </div>
 
 </div>
 
-      {/* AI FLOATING INSIGHT */}
-      <div className={styles.floatingInsight}>
-        <div className={styles.insightIcon}>
-          ✦
-        </div>
 
-        <div>
-          <small>SOLOPADI AI</small>
 
-          <strong>
-            Your business, with more clarity.
-          </strong>
-        </div>
-      </div>
-
-    </div>
 
     <div className={styles.productFootnote}>
       <span>01</span>
