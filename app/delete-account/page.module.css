@@ -1,0 +1,410 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 85% 8%, rgba(22, 163, 74, 0.08), transparent 28%),
+    #f7faf8;
+  color: #111813;
+  padding: 0 24px 80px;
+}
+
+.container {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+.header {
+  padding: 42px 0 34px;
+  text-align: center;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 65px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #111813;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.brandMark {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #16a34a;
+  color: white;
+  font-size: 19px;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
+}
+
+.backLink {
+  color: #68736b;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: #16a34a;
+}
+
+.icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(22, 163, 74, 0.16);
+  border-radius: 22px;
+  background: rgba(22, 163, 74, 0.08);
+  font-size: 30px;
+  box-shadow: 0 15px 35px rgba(15, 23, 18, 0.05);
+}
+
+.header h1 {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #101510;
+  font-size: clamp(38px, 6vw, 62px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 850;
+}
+
+.subtitle {
+  margin: 16px auto 0;
+  color: #748078;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* MAIN CARD */
+
+.card {
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 18, 0.08);
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow:
+    0 30px 80px rgba(15, 23, 18, 0.08),
+    0 8px 25px rgba(15, 23, 18, 0.04);
+}
+
+.content {
+  padding: 55px;
+}
+
+/* SECTIONS */
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  margin: 0 0 14px;
+  color: #101510;
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  font-weight: 820;
+}
+
+.section p {
+  margin: 0;
+  color: #657068;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* INTRO */
+
+.intro {
+  padding-bottom: 38px;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.intro h2 {
+  color: #16a34a;
+}
+
+/* STEPS */
+
+.steps {
+  display: grid;
+  gap: 13px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 17px 18px;
+  border: 1px solid #edf1ed;
+  border-radius: 17px;
+  background: #fbfdfb;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  border-color: rgba(22, 163, 74, 0.2);
+  box-shadow: 0 12px 28px rgba(15, 23, 18, 0.05);
+}
+
+.stepNumber {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #eaf8ee;
+  color: #168a40;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.stepText {
+  padding-top: 5px;
+  color: #4f5b53;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* INFORMATION BOX */
+
+.infoBox {
+  padding: 25px;
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  border-radius: 20px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(22, 163, 74, 0.055),
+      rgba(22, 163, 74, 0.015)
+    );
+}
+
+.infoBox h2 {
+  margin-bottom: 12px;
+}
+
+/* LISTS */
+
+.list {
+  margin: 18px 0 0;
+  padding-left: 22px;
+}
+
+.list li {
+  margin-bottom: 12px;
+  padding-left: 5px;
+  color: #657068;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.list li::marker {
+  color: #16a34a;
+}
+
+/* CONTACT */
+
+.contactBox {
+  padding: 28px;
+  border-radius: 22px;
+  background: #101510;
+  color: white;
+}
+
+.contactBox h2 {
+  color: white;
+}
+
+.contactBox p {
+  color: #b9c4bc;
+}
+
+.email {
+  display: inline-block;
+  margin-top: 16px;
+  color: #7bea9f;
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+/* BOTTOM PRIVACY */
+
+.bottom {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #edf1ed;
+  text-align: center;
+}
+
+.bottom p {
+  margin: 0;
+  color: #78837c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.bottomLink {
+  color: #16a34a;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.bottomLink:hover {
+  text-decoration: underline;
+}
+
+.brandFooter {
+  margin-top: 25px !important;
+  color: #59645c !important;
+  font-weight: 800;
+}
+
+.footerDescription {
+  margin-top: 3px !important;
+  color: #9aa39d !important;
+  font-size: 12px !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .page {
+    padding: 0 16px 50px;
+  }
+
+  .header {
+    padding-top: 25px;
+  }
+
+  .topBar {
+    margin-bottom: 50px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .brandMark {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    font-size: 17px;
+  }
+
+  .backLink {
+    font-size: 12px;
+  }
+
+  .icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 19px;
+    font-size: 26px;
+  }
+
+  .header h1 {
+    font-size: clamp(36px, 11vw, 52px);
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .card {
+    border-radius: 24px;
+  }
+
+  .content {
+    padding: 32px 22px;
+  }
+
+  .section {
+    margin-bottom: 38px;
+  }
+
+  .section h2 {
+    font-size: 21px;
+  }
+
+  .section p,
+  .list li {
+    font-size: 14px;
+  }
+
+  .step {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .stepNumber {
+    width: 31px;
+    height: 31px;
+    border-radius: 9px;
+  }
+
+  .stepText {
+    padding-top: 4px;
+    font-size: 13px;
+  }
+
+  .infoBox,
+  .contactBox {
+    padding: 21px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .topBar {
+    align-items: flex-start;
+  }
+
+  .backLink {
+    max-width: 100px;
+    text-align: right;
+  }
+
+  .content {
+    padding: 27px 18px;
+  }
+
+  .header h1 {
+    letter-spacing: -0.055em;
+  }
+}

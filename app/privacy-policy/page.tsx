@@ -1,3 +1,6 @@
+import Link from "next/link";
+import styles from "./page.module.css";
+
 export const metadata = {
   title: "SoloPadi Privacy Policy",
   description:
@@ -91,67 +94,131 @@ const sections = [
   },
 ];
 
+
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-slate-50 px-5 py-10 sm:px-8">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-3xl">
-            🔒
-          </div>
+    <main className={styles.page}>
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            SoloPadi Privacy Policy
-          </h1>
+      <header className={styles.header}>
 
-          <p className="mt-2 text-sm text-slate-500">
-            Last updated: 14 August 2026
-          </p>
+        <Link href="/" className={styles.logo}>
+          <span className={styles.logoMark}>S</span>
+          <span>SoloPadi</span>
+        </Link>
+
+        <Link href="/" className={styles.backLink}>
+          ← Back to SoloPadi
+        </Link>
+
+      </header>
+
+
+      <section className={styles.hero}>
+
+        <div className={styles.eyebrow}>
+          LEGAL · PRIVACY
         </div>
 
-        <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
-          <p className="mb-8 text-base leading-7 text-slate-600">
-            SoloPadi is a business management and order management service
-            that helps businesses manage customers, orders, riders,
-            deliveries and related business activities. This Privacy Policy
-            explains how SoloPadi collects, uses, stores, shares and protects
-            information when you use the SoloPadi mobile application, public
-            ordering forms, customer tracking pages and related services.
-          </p>
+        <h1>
+          Privacy
+          <span> Policy.</span>
+        </h1>
 
-          {sections.map((section) => (
-            <section key={section.title} className="mb-7">
-              <h2 className="mb-2 text-xl font-extrabold text-slate-900">
-                {section.title}
-              </h2>
+        <p>
+          How SoloPadi collects, uses, stores, shares and
+          protects information across its services.
+        </p>
 
-              <p className="text-[15px] leading-7 text-slate-600">
-                {section.text}
-              </p>
-            </section>
-          ))}
+        <div className={styles.updated}>
+          Last updated · 14 August 2026
+        </div>
 
-          <div className="mt-10 border-t border-slate-200 pt-6 text-center">
-            <p className="text-sm font-semibold text-slate-500">
-              SoloPadi
-            </p>
+      </section>
 
-            <p className="mt-1 text-sm text-slate-400">
-              Business management and order management platform
-            </p>
 
-            <p className="mt-3 text-sm text-slate-500">
-              Contact:{" "}
-              <a
-                href="mailto:admin.solopadi@gmail.com"
-                className="font-semibold text-green-600 hover:underline"
+      <section className={styles.content}>
+
+        <article className={styles.card}>
+
+          <div className={styles.introduction}>
+            SoloPadi is a business management and order management
+            service that helps businesses manage customers, orders,
+            riders, deliveries and related business activities.
+            This Privacy Policy explains how SoloPadi collects,
+            uses, stores, shares and protects information when you
+            use the SoloPadi mobile application, public ordering
+            forms, customer tracking pages and related services.
+          </div>
+
+
+          <div className={styles.sections}>
+
+            {sections.map((section) => (
+              <section
+                key={section.title}
+                className={styles.section}
               >
+
+                <h2>
+                  {section.title}
+                </h2>
+
+                <p>
+                  {section.text}
+                </p>
+
+              </section>
+            ))}
+
+          </div>
+
+
+          <div className={styles.documentFooter}>
+
+            <strong>SoloPadi</strong>
+
+            <span>
+              Business management and order management platform
+            </span>
+
+            <span>
+              Contact:{" "}
+              <a href="mailto:admin.solopadi@gmail.com">
                 admin.solopadi@gmail.com
               </a>
-            </p>
+            </span>
+
           </div>
+
         </article>
-      </div>
+
+      </section>
+
+
+      <footer className={styles.footer}>
+
+        <span>
+          © 2026 SoloPadi
+        </span>
+
+        <div>
+
+          <Link href="/terms">
+            Terms
+          </Link>
+
+          <Link href="/delete-account">
+            Delete account
+          </Link>
+
+          <a href="mailto:admin.solopadi@gmail.com">
+            Contact
+          </a>
+
+        </div>
+
+      </footer>
+
     </main>
   );
 }

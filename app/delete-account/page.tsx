@@ -1,3 +1,5 @@
+import styles from "./page.module.css";
+
 export const metadata = {
   title: "Delete Your SoloPadi Account",
   description:
@@ -6,204 +8,210 @@ export const metadata = {
 
 export default function DeleteAccountPage() {
   return (
-    <main className="min-h-screen bg-slate-50 px-5 py-10 sm:px-8">
-      <div className="mx-auto max-w-4xl">
+    <main className={styles.page}>
+      <div className={styles.container}>
+
         {/* Header */}
-        <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 text-3xl">
-            🗑️
+        <header className={styles.header}>
+          <div className={styles.topBar}>
+            <a href="/" className={styles.brand}>
+              <span className={styles.brandMark}>S</span>
+              SoloPadi
+            </a>
+
+            <a href="/" className={styles.backLink}>
+              ← Back to SoloPadi
+            </a>
           </div>
 
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Delete Your SoloPadi Account
-          </h1>
+          <div className={styles.icon}>🗑️</div>
 
-          <p className="mt-2 text-sm text-slate-500">
+          <h1>Delete Your SoloPadi Account</h1>
+
+          <p className={styles.subtitle}>
             SoloPadi account and data deletion information
           </p>
-        </div>
+        </header>
 
-        <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
-          {/* Introduction */}
-          <section className="mb-8">
-            <h2 className="mb-3 text-xl font-extrabold text-slate-900">
-              Request account deletion
-            </h2>
+        {/* Main content */}
+        <article className={styles.card}>
+          <div className={styles.content}>
 
-            <p className="text-[15px] leading-7 text-slate-600">
-              SoloPadi provides logged-in users with the ability to delete
-              their account from within the SoloPadi application. Account
-              deletion is intended for users who no longer want to use their
-              SoloPadi account.
-            </p>
-          </section>
+            {/* Introduction */}
+            <section className={`${styles.section} ${styles.intro}`}>
+              <h2>Request account deletion</h2>
 
-          {/* Steps */}
-          <section className="mb-8">
-            <h2 className="mb-4 text-xl font-extrabold text-slate-900">
-              How to delete your SoloPadi account
-            </h2>
+              <p>
+                SoloPadi provides logged-in users with the ability to delete
+                their account from within the SoloPadi application. Account
+                deletion is intended for users who no longer want to use their
+                SoloPadi account.
+              </p>
+            </section>
 
-            <ol className="space-y-4">
-              {[
-                "Open the SoloPadi application.",
-                "Sign in to your SoloPadi account.",
-                "Open the Settings section of the application.",
-                "Select the Delete Account option.",
-                "Review the information presented and confirm that you want to delete your account.",
-              ].map((step, index) => (
-                <li key={step} className="flex gap-4">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-100 text-sm font-bold text-green-700">
-                    {index + 1}
-                  </span>
+            {/* Steps */}
+            <section className={styles.section}>
+              <h2>How to delete your SoloPadi account</h2>
 
-                  <p className="pt-1 text-[15px] leading-7 text-slate-600">
-                    {step}
-                  </p>
+              <ol className={styles.steps}>
+                {[
+                  "Open the SoloPadi application.",
+                  "Sign in to your SoloPadi account.",
+                  "Open the Settings section of the application.",
+                  "Select the Delete Account option.",
+                  "Review the information presented and confirm that you want to delete your account.",
+                ].map((step, index) => (
+                  <li key={step} className={styles.step}>
+                    <span className={styles.stepNumber}>
+                      {index + 1}
+                    </span>
+
+                    <span className={styles.stepText}>
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            {/* What gets deleted */}
+            <section className={`${styles.section} ${styles.infoBox}`}>
+              <h2>What happens to your data</h2>
+
+              <p>
+                When an account deletion request is completed, SoloPadi will
+                delete or anonymize personal information associated with the
+                account where reasonably possible.
+              </p>
+
+              <ul className={styles.list}>
+                <li>
+                  Your SoloPadi account and associated authentication
+                  information will be deleted or disabled.
                 </li>
-              ))}
-            </ol>
-          </section>
 
-          {/* What gets deleted */}
-          <section className="mb-8">
-            <h2 className="mb-3 text-xl font-extrabold text-slate-900">
-              What happens to your data
-            </h2>
+                <li>
+                  Personal information associated with your account will be
+                  deleted or anonymized where reasonably possible.
+                </li>
 
-            <p className="mb-4 text-[15px] leading-7 text-slate-600">
-              When an account deletion request is completed, SoloPadi will
-              delete or anonymize personal information associated with the
-              account where reasonably possible.
-            </p>
+                <li>
+                  Information that is no longer required for legitimate
+                  business or legal purposes may be removed from our systems.
+                </li>
 
-            <ul className="space-y-3 pl-5 text-[15px] leading-7 text-slate-600">
-              <li className="list-disc">
-                Your SoloPadi account and associated authentication information
-                will be deleted or disabled.
-              </li>
+                <li>
+                  Deletion may permanently remove your access to your SoloPadi
+                  account and associated account features.
+                </li>
+              </ul>
+            </section>
 
-              <li className="list-disc">
-                Personal information associated with your account will be
-                deleted or anonymized where reasonably possible.
-              </li>
+            {/* Data that may be retained */}
+            <section className={styles.section}>
+              <h2>Information that may be retained</h2>
 
-              <li className="list-disc">
-                Information that is no longer required for legitimate business
-                or legal purposes may be removed from our systems.
-              </li>
+              <p>
+                Some information may need to be retained after an account
+                deletion request where reasonably necessary or required by
+                applicable law.
+              </p>
 
-              <li className="list-disc">
-                Deletion may permanently remove your access to your SoloPadi
-                account and associated account features.
-              </li>
-            </ul>
-          </section>
+              <ul className={styles.list}>
+                <li>
+                  Business or transaction records that must be retained to
+                  comply with legal or regulatory obligations.
+                </li>
 
-          {/* Data that may be retained */}
-          <section className="mb-8">
-            <h2 className="mb-3 text-xl font-extrabold text-slate-900">
-              Information that may be retained
-            </h2>
+                <li>
+                  Information reasonably necessary to resolve disputes or
+                  enforce agreements.
+                </li>
 
-            <p className="mb-4 text-[15px] leading-7 text-slate-600">
-              Some information may need to be retained after an account
-              deletion request where reasonably necessary or required by
-              applicable law.
-            </p>
+                <li>
+                  Information reasonably necessary to detect, prevent or
+                  investigate fraud, abuse or security incidents.
+                </li>
 
-            <ul className="space-y-3 pl-5 text-[15px] leading-7 text-slate-600">
-              <li className="list-disc">
-                Business or transaction records that must be retained to
-                comply with legal or regulatory obligations.
-              </li>
+                <li>
+                  Information required to protect the rights, safety or
+                  security of SoloPadi, its users or third parties.
+                </li>
+              </ul>
 
-              <li className="list-disc">
-                Information reasonably necessary to resolve disputes or
-                enforce agreements.
-              </li>
+              <p style={{ marginTop: "16px" }}>
+                Where information must be retained for one of these purposes,
+                it will be retained only for as long as reasonably necessary
+                for that purpose and will be deleted or anonymized when it is
+                no longer required, subject to applicable legal requirements.
+              </p>
+            </section>
 
-              <li className="list-disc">
-                Information reasonably necessary to detect, prevent or
-                investigate fraud, abuse or security incidents.
-              </li>
+            {/* Customer and order information */}
+            <section className={styles.section}>
+              <h2>Customer and order information</h2>
 
-              <li className="list-disc">
-                Information required to protect the rights, safety or
-                security of SoloPadi, its users or third parties.
-              </li>
-            </ul>
+              <p>
+                SoloPadi may contain customer and order information recorded by
+                businesses. Deleting a vendor account does not necessarily mean
+                that every historical order or business transaction record is
+                immediately deleted, particularly where the information must be
+                retained for legitimate business, legal, security or dispute
+                resolution purposes. Where appropriate, personal information
+                may be deleted or anonymized.
+              </p>
+            </section>
 
-            <p className="mt-4 text-[15px] leading-7 text-slate-600">
-              Where information must be retained for one of these purposes,
-              it will be retained only for as long as reasonably necessary
-              for that purpose and will be deleted or anonymized when it is
-              no longer required, subject to applicable legal requirements.
-            </p>
-          </section>
+            {/* Need help */}
+            <section className={`${styles.section} ${styles.contactBox}`}>
+              <h2>Need help?</h2>
 
-          {/* Public customer data */}
-          <section className="mb-8">
-            <h2 className="mb-3 text-xl font-extrabold text-slate-900">
-              Customer and order information
-            </h2>
+              <p>
+                If you cannot access your SoloPadi account or cannot complete
+                the deletion process from within the application, contact us
+                at
+              </p>
 
-            <p className="text-[15px] leading-7 text-slate-600">
-              SoloPadi may contain customer and order information recorded by
-              businesses. Deleting a vendor account does not necessarily mean
-              that every historical order or business transaction record is
-              immediately deleted, particularly where the information must be
-              retained for legitimate business, legal, security or dispute
-              resolution purposes. Where appropriate, personal information
-              may be deleted or anonymized.
-            </p>
-          </section>
-
-          {/* Alternative contact */}
-          <section className="mb-8">
-            <h2 className="mb-3 text-xl font-extrabold text-slate-900">
-              Need help?
-            </h2>
-
-            <p className="text-[15px] leading-7 text-slate-600">
-              If you cannot access your SoloPadi account or cannot complete
-              the deletion process from within the application, contact us
-              at{" "}
               <a
                 href="mailto:admin.solopadi@gmail.com"
-                className="font-semibold text-green-600 hover:underline"
+                className={styles.email}
               >
                 admin.solopadi@gmail.com
               </a>
-              . Please include enough information for us to identify your
-              account and process your request. We may need to verify your
-              identity before processing a deletion request.
-            </p>
-          </section>
 
-          {/* Privacy Policy */}
-          <section className="border-t border-slate-200 pt-6 text-center">
-            <p className="text-sm text-slate-500">
-              For additional information about how SoloPadi collects, uses,
-              stores and protects information, please see our{" "}
-              <a
-                href="/privacy-policy"
-                className="font-semibold text-green-600 hover:underline"
-              >
-                Privacy Policy
-              </a>
-              .
-            </p>
+              <p style={{ marginTop: "14px" }}>
+                Please include enough information for us to identify your
+                account and process your request. We may need to verify your
+                identity before processing a deletion request.
+              </p>
+            </section>
 
-            <p className="mt-4 text-sm font-semibold text-slate-500">
-              SoloPadi
-            </p>
+            {/* Privacy Policy */}
+            <section className={styles.bottom}>
+              <p>
+                For additional information about how SoloPadi collects, uses,
+                stores and protects information, please see our{" "}
+                <a
+                  href="/privacy-policy"
+                  className={styles.bottomLink}
+                >
+                  Privacy Policy
+                </a>
+                .
+              </p>
 
-            <p className="mt-1 text-sm text-slate-400">
-              Business management and order management platform
-            </p>
-          </section>
+              <p className={styles.brandFooter}>
+                SoloPadi
+              </p>
+
+              <p className={styles.footerDescription}>
+                Business management and order management platform
+              </p>
+            </section>
+
+          </div>
         </article>
+
       </div>
     </main>
   );
