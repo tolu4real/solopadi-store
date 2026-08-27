@@ -848,7 +848,7 @@ export default function Home() {
 
         <div className={styles.customerScreenshotWrap}>
           <img
-            src="/screenshots/tracking.png"
+            src="/screenshots/tracking.PNG"
             alt="SoloPadi customer order tracking page"
             className={styles.customerScreenshot}
           />
