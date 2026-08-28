@@ -50,15 +50,26 @@ export default function Home() {
             </p>
 
             <div className={styles.heroActions}>
-              <a href="#early-access" className={styles.primaryButton}>
-                Join the Early Merchant Programme
-                <span>→</span>
-              </a>
+  <a href="#early-access" className={styles.primaryButton}>
+    <span className={styles.desktopButtonText}>
+      Join the Early Merchant Programme
+    </span>
+    <span className={styles.mobileButtonText}>
+      Join Early Access
+    </span>
+    <span>→</span>
+  </a>
 
-              <a href="#how-it-works" className={styles.secondaryButton}>
-                See how it works
-              </a>
-            </div>
+  <a href="#how-it-works" className={styles.secondaryButton}>
+    <span className={styles.desktopButtonText}>
+      See how it works
+    </span>
+    <span className={styles.mobileButtonText}>
+      How it works
+    </span>
+  </a>
+</div>
+
 
             <p className={styles.heroNote}>
               Free early access · Limited first cohort · Built for Nigerian

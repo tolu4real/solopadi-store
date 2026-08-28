@@ -5501,3 +5501,37 @@
     gap: 8px;
   }
 }
+
+
+.desktopButtonText {
+  display: inline;
+}
+
+.mobileButtonText {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .desktopButtonText {
+    display: none;
+  }
+
+  .mobileButtonText {
+    display: inline;
+  }
+
+  .heroActions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+  }
+}
