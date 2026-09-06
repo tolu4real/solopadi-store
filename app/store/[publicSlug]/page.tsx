@@ -12,6 +12,7 @@ type Vendor = {
   phone?: string | null;
   address?: string | null;
   public_slug: string;
+  business_logo_url?: string | null;
 };
 
 export default function StorePage() {
@@ -47,8 +48,8 @@ export default function StorePage() {
     const { data, error } = await supabase
       .from("vendors")
       .select(
-        "id, business_name, full_name, phone, address, public_slug"
-      )
+    "id, business_name, full_name, phone, address, public_slug, business_logo_url"
+  )
       .eq("public_slug", publicSlug)
       .maybeSingle();
 
@@ -277,11 +278,19 @@ export default function StorePage() {
 
         <section style={styles.storeCard}>
           <div style={styles.storeIcon}>
-            <StoreIcon
-              size={38}
-              color="#16A34A"
-            />
-          </div>
+  {vendor.business_logo_url ? (
+    <img
+      src={vendor.business_logo_url}
+      alt={`${vendor.business_name} logo`}
+      style={styles.vendorLogoImage}
+    />
+  ) : (
+    <StoreIcon
+      size={38}
+      color="#16A34A"
+    />
+  )}
+</div>
 
           <div style={styles.verifiedBadge}>
             <CheckIcon
@@ -1132,6 +1141,13 @@ const styles: Record<
     alignItems: "center",
     justifyContent: "center",
   },
+
+  vendorLogoImage: {
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  borderRadius: "50%",
+},
 
   verifiedBadge: {
     display: "inline-flex",
