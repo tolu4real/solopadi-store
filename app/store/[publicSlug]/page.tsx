@@ -206,9 +206,13 @@ export default function StorePage() {
   if (loading) {
     return (
       <main style={styles.loadingPage}>
-        <div style={styles.loadingLogo}>
-          <StoreIcon size={26} color="#FFFFFF" />
-        </div>
+        <div style={styles.logo}>
+  <img
+    src="/screenshots/solopadi_logo.png"
+    alt="SoloPadi"
+    style={styles.logoImage}
+  />
+</div>
 
         <div style={styles.spinner} />
 
@@ -1086,6 +1090,12 @@ const styles: Record<
     boxShadow:
       "0 8px 22px rgba(22,163,74,.22)",
   },
+
+  logoImage: {
+  width: 30,
+  height: 30,
+  objectFit: "contain",
+},
 
   brand: {
     fontSize: "19px",
