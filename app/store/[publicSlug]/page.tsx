@@ -208,7 +208,7 @@ export default function StorePage() {
       <main style={styles.loadingPage}>
         <div style={styles.logo}>
   <img
-    src="/screenshots/solopadi_logo.png"
+    src="/screenshots/solopadi_logo.PNG"
     alt="SoloPadi"
     style={styles.logoImage}
   />
@@ -254,11 +254,12 @@ export default function StorePage() {
         <header style={styles.header}>
           <div style={styles.brandRow}>
             <div style={styles.logo}>
-              <StoreIcon
-                size={23}
-                color="#FFFFFF"
-              />
-            </div>
+      <img
+        src="/screenshots/solopadi_logo.png"
+        alt="SoloPadi"
+        style={styles.logoImage}
+      />
+    </div>
 
             <div>
               <div style={styles.brand}>
