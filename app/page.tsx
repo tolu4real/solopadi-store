@@ -1,1604 +1,1206 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { useState } from "react";
 
-export default function Home() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState("");
+const GOOGLE_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=com.solopadi.vendor";
+
+function BrowserFrame({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div className={`${styles.browserFrame} ${className}`}>
+      <div className={styles.browserTopBar}>
+        <div className={styles.browserDots}>
+          <span />
+          <span />
+          <span />
+        </div>
+
+        <div className={styles.browserAddress}>
+          <span className={styles.lockIcon}>⌁</span>
+          solopadi.com.ng
+        </div>
+
+        <div className={styles.browserMenu}>•••</div>
+      </div>
+
+      <div className={styles.browserContent}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 800px) 94vw, 900px"
+          className={styles.browserImage}
+        />
+      </div>
+    </div>
+  );
+}
+
+function PhoneFrame({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div className={`${styles.showcasePhone} ${styles.reveal} ${className}`}>
+      <div className={styles.showcasePhoneSpeaker} />
+
+      <div className={styles.showcasePhoneScreen}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 800px) 70vw, 360px"
+          className={styles.showcasePhoneImage}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default function HomePage() {
   return (
     <main className={styles.page}>
-      {/* NAVIGATION */}
-      <nav className={styles.nav}>
-        <Link href="/" className={styles.brand}>
-          <span className={styles.brandMark}>S</span>
-          SoloPadi
-        </Link>
+      {/* =========================================================
+          NAVIGATION
+      ========================================================= */}
+      <header className={styles.nav}>
+        <div className={styles.navInner}>
+          <Link href="/" className={styles.brand}>
+            <Image
+              src="/screenshots/solopadi_logo.png"
+              alt="SoloPadi"
+              width={42}
+              height={42}
+              className={styles.brandLogo}
+              priority
+            />
 
-        <div className={styles.navLinks}>
-          <a href="#how-it-works">How it works</a>
-          <a href="#ai">SoloPadi AI</a>
-          <a href="#early-access">Early access</a>
+            <span className={styles.brandName}>SoloPadi</span>
+          </Link>
 
-          <a href="#early-access" className={styles.navCta}>
-            Join early access
+          <nav className={styles.navLinks}>
+            <a href="#how-it-works">How it works</a>
+            <a href="#features">Features</a>
+            <a href="#ai-business">AI Business</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+
+          <a
+            href={GOOGLE_PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.navCta}
+          >
+            Get SoloPadi
+            <span>↗</span>
           </a>
         </div>
-      </nav>
+      </header>
 
-      {/* HERO */}
+      {/* =========================================================
+          HERO
+      ========================================================= */}
       <section className={styles.hero}>
+        <div className={styles.heroGlow} />
+
         <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
+          <div className={styles.heroCopy}>
             <div className={styles.eyebrow}>
               <span className={styles.eyebrowDot} />
-              Early Merchant Programme
+              BUILT FOR MODERN SELLERS
             </div>
 
-            <h1 className={styles.heroTitle}>
-              You made the sale.
-              <span className={styles.heroTitleAccent}>
-                We handle what comes next.
-              </span>
+            <h1>
+              You make the sale.
+              <br />
+              <span>SoloPadi handles everything after payment.</span>
             </h1>
 
             <p className={styles.heroDescription}>
-              Turn confirmed WhatsApp and social-media orders into organized,
-              trackable deliveries — with the tools you need to manage the
-              journey from customer details to final confirmation.
+              Keep selling through WhatsApp, Instagram, TikTok, or wherever
+              your customers are. Once payment is settled, SoloPadi helps you
+              manage the order, organize delivery, keep customers informed,
+              and understand your business.
             </p>
 
             <div className={styles.heroActions}>
-  <a href="#early-access" className={styles.primaryButton}>
-    <span className={styles.desktopButtonText}>
-      Join the Early Merchant Programme
-    </span>
-    <span className={styles.mobileButtonText}>
-      Join Early Access
-    </span>
-    <span>→</span>
-  </a>
+              
 
-  <a href="#how-it-works" className={styles.secondaryButton}>
-    <span className={styles.desktopButtonText}>
-      See how it works
-    </span>
-    <span className={styles.mobileButtonText}>
-      How it works
-    </span>
-  </a>
-</div>
-
-
-            <p className={styles.heroNote}>
-              Free early access · Limited first cohort · Built for Nigerian
-              merchants
-            </p>
-          </div>
-
-         
-         {/* PRODUCT VISUAL */}
-<div className={styles.heroVisual}>
-  <div className={styles.visualGlow} />
-
-  <div className={`${styles.heroOrb} ${styles.orbOne}`} />
-  <div className={`${styles.heroOrb} ${styles.orbTwo}`} />
-
-  <div className={`${styles.floatingCard} ${styles.cardOne}`}>
-    <div className={styles.floatingTop}>
-      <div className={styles.floatingIcon}>✓</div>
-
-      <div className={styles.floatingLabel}>
-        Order confirmed
-      </div>
-    </div>
-
-    <div className={styles.floatingTitle}>
-      Customer details received
-    </div>
-
-    <div className={styles.floatingSub}>
-      Your order is ready to be managed.
-    </div>
-  </div>
-
-  <div className={`${styles.floatingCard} ${styles.cardTwo}`}>
-    <div className={styles.floatingTop}>
-      <div className={styles.floatingIcon}>↗</div>
-
-      <div className={styles.floatingLabel}>
-        Delivery
-      </div>
-    </div>
-
-    <div className={styles.floatingTitle}>
-      Customer can track the order
-    </div>
-
-    <div className={styles.floatingSub}>
-      A simple tracking experience keeps everyone informed.
-    </div>
-  </div>
-
-  {/* REAL SOLOPADI DASHBOARD */}
-  <div className={styles.dashboardFrame}>
-    <div className={styles.dashboardBrowserBar}>
-      <div className={styles.browserDots}>
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <div className={styles.browserAddress}>
-        app.solopadi.com.ng
-      </div>
-    </div>
-
-    <div className={styles.dashboardImageWrap}>
-      <img
-        src="/screenshots/dashboard.png"
-        alt="SoloPadi vendor dashboard"
-        className={styles.dashboardImage}
-      />
-    </div>
-  </div>
-</div>
-</div>
-</section>
-
-{/* SOCIAL COMMERCE CONTEXT */}
-<section className={styles.contextStrip}>
-  <div className={styles.contextInner}>
-    <p className={styles.contextText}>
-      Keep selling where your customers already are.
-    </p>
-
-    <div className={styles.channels}>
-      <span className={styles.channel}>WhatsApp</span>
-      <span className={styles.channel}>Instagram</span>
-      <span className={styles.channel}>TikTok</span>
-      <span className={styles.channel}>Facebook</span>
-    </div>
-  </div>
-</section>
-
-
-
-
-      {/* PROBLEM */}
-      <section className={styles.darkSection}>
-        <div className={styles.darkInner}>
-          <div className={styles.sectionKicker}>
-            The part nobody sees
-          </div>
-
-          <h2 className={styles.darkTitle}>
-            The sale is only the beginning.
-            <span> Then the real work starts.</span>
-          </h2>
-
-          <div className={styles.problemGrid}>
-            <article className={styles.problemCard}>
-              <div className={styles.problemNumber}>01</div>
-
-              <h3>Customer details</h3>
-
-              <p>
-                Orders are agreed in conversations, but the information
-                needed to fulfill them can become scattered across messages.
-              </p>
-            </article>
-
-            <article className={styles.problemCard}>
-              <div className={styles.problemNumber}>02</div>
-
-              <h3>Fulfillment</h3>
-
-              <p>
-                Once payment and the sale are settled, someone still has to
-                organize the order and get it moving.
-              </p>
-            </article>
-
-            <article className={styles.problemCard}>
-              <div className={styles.problemNumber}>03</div>
-
-              <h3>Delivery</h3>
-
-              <p>
-                Customers want visibility, merchants want control, and
-                everyone wants the order to arrive successfully.
-              </p>
-            </article>
-          </div>
-        </div>
-            </section>
-
-      {/* HOW IT WORKS */}
-      <section
-  id="how-it-works"
-  className={styles.journeySection}
+            
+<a
+  href={GOOGLE_PLAY_URL}
+  target="_blank"
+  rel="noopener noreferrer"
+  className={styles.primaryButton}
 >
-        <div className={styles.journeyInner}>
-          <div className={styles.journeyIntro}>
-            <div className={styles.journeyKicker}>
-              HOW SOLOPADI WORKS
+  <Image
+    src="/screenshots/playstore-icon.png"
+    alt=""
+    width={24}
+    height={24}
+    className={styles.playStoreIcon}
+  />
+
+  <span>Download SoloPadi</span>
+
+  <span className={styles.buttonArrow}>↗</span>
+</a>
+
+
+              <a href="#how-it-works" className={styles.secondaryButton}>
+                See how it works
+                <span>↓</span>
+              </a>
             </div>
 
-            <h2 className={styles.journeyTitle}>
-              From conversation
-              <span> to confirmation.</span>
-            </h2>
+            <div className={styles.heroTrust}>
+              <div className={styles.playBadge}>
+                <span className={styles.playIcon}>▶</span>
 
-            <p className={styles.journeyDescription}>
-              Keep selling wherever your customers already find you.
-              SoloPadi takes over the operational journey once the sale is
-              confirmed.
-            </p>
+                <div>
+                  <small>AVAILABLE ON</small>
+                  <strong>Google Play</strong>
+                </div>
+              </div>
+
+              <div className={styles.trustDivider} />
+
+              <span className={styles.trustText}>
+                Made for Nigerian businesses
+              </span>
+            </div>
           </div>
 
-          <div className={styles.journeyFlow}>
-            <div className={styles.journeyLine} />
+          <div className={styles.heroProduct}>
+            <div className={styles.productGlow} />
 
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
-                01
+            <div className={styles.floatingCardTop}>
+              <div className={styles.floatingIcon}>✓</div>
+
+              <div>
+                <span>ORDER STATUS</span>
+                <strong>Everything under control</strong>
+              </div>
+            </div>
+
+            <div className={styles.phoneFrame}>
+              <div className={styles.phoneSideButton} />
+
+              <div className={styles.phoneTop}>
+                <div className={styles.phoneSpeaker} />
               </div>
 
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  SALE CONFIRMED
+              <div className={styles.phoneScreen}>
+                <Image
+                  src="/screenshots/dashboard.png"
+                  alt="SoloPadi business dashboard"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 70vw, 420px"
+                  className={styles.dashboardImage}
+                />
+              </div>
+            </div>
+
+            <div className={styles.floatingCardBottom}>
+              <div className={styles.miniAvatar}>S</div>
+
+              <div className={styles.floatingOrder}>
+                <span>YOUR BUSINESS</span>
+                <strong>Run it from one place.</strong>
+              </div>
+
+              <div className={styles.liveDot}>
+                <span />
+                Live
+              </div>
+            </div>
+
+            <div className={styles.productShadow} />
+          </div>
+        </div>
+
+        <div className={styles.heroBottom}>
+          <span>SELL WHERE YOUR CUSTOMERS ARE</span>
+
+          <div className={styles.channelList}>
+            <span>WhatsApp</span>
+            <span>Instagram</span>
+            <span>TikTok</span>
+            <span>Phone</span>
+            <span>Social commerce</span>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          WORKFLOW INTRO
+      ========================================================= */}
+      <section id="how-it-works" className={styles.workflowIntro}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.sectionEyebrow}>
+            <span />
+            THE SOLOPADI WORKFLOW
+          </div>
+
+          <h2>
+            Your sale happens
+            <br />
+            <em>wherever you sell.</em>
+          </h2>
+
+          <p className={styles.sectionLead}>
+            WhatsApp. Instagram. TikTok. Phone calls. Your customers already
+            know where to find you. SoloPadi doesn't ask you to change that.
+          </p>
+
+          <div className={styles.workflowStatement}>
+            <div className={styles.statementLine} />
+
+            <div>
+              <span>THEN SOLOPADI TAKES OVER</span>
+              <strong>
+                Everything after payment,
+                <br />
+                in one place.
+              </strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          STEP 01 — CAPTURE THE ORDER
+      ========================================================= */}
+      <section className={styles.workflowSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.workflowGrid}>
+            <div className={styles.workflowCopy}>
+              <div className={styles.stepNumber}>01</div>
+
+              <div className={styles.stepTag}>CAPTURE THE ORDER</div>
+
+              <h3>
+                Turn a confirmed sale
+                <br />
+                into an organized order.
+              </h3>
+
+              <p>
+                Once you've made the sale and payment is settled, use SoloPadi
+                to collect the information needed to fulfil the order. No more
+                digging through conversations for delivery details.
+              </p>
+
+              <div className={styles.featurePoints}>
+                <div>
+                  <span>✓</span>
+                  Customer details
                 </div>
 
-                <h3>
-                  Close the sale where you already sell.
-                </h3>
-
-                <p>
-                  Continue using WhatsApp, Instagram, TikTok or your
-                  preferred social channel to communicate with your
-                  customers and finalize the order.
-                </p>
-              </div>
-
-              <div className={styles.journeyVisual}>
-                <div className={styles.chatMock}>
-                  <div className={styles.chatHeader}>
-                    Customer conversation
-                  </div>
-
-                  <div className={styles.chatBubble}>
-                    Order confirmed ✓
-                  </div>
-
-                  <div className={styles.chatBubbleSmall}>
-                    Thank you!
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
-                02
-              </div>
-
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  ORDER DETAILS
+                <div>
+                  <span>✓</span>
+                  Delivery information
                 </div>
 
-                <h3>
-                  Send your SoloPadi link.
-                </h3>
-
-                <p>
-                  Give the customer a simple SoloPadi link to provide the
-                  information needed to fulfill the order and arrange
-                  delivery.
-                </p>
-              </div>
-
-              <div className={styles.journeyVisual}>
-                <div className={styles.linkMock}>
-                  <div className={styles.linkIcon}>
-                    ↗
-                  </div>
-
-                  <div>
-                    <small>SOLOPADI ORDER LINK</small>
-                    <strong>Complete your order details</strong>
-                  </div>
+                <div>
+                  <span>✓</span>
+                  Order details
                 </div>
               </div>
-            </article>
+            </div>
 
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
-                03
-              </div>
+            <div className={styles.workflowVisual}>
+              <BrowserFrame
+                src="/screenshots/store-order-form.png"
+                alt="SoloPadi customer order form"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  MANAGE
-                </div>
+      {/* =========================================================
+          STEP 02 — ORDERS
+      ========================================================= */}
+      <section className={`${styles.workflowSection} ${styles.softSection}`}>
+        <div className={styles.sectionContainer}>
+          <div className={`${styles.workflowGrid} ${styles.reverseGrid}`}>
+            <div className={styles.workflowVisual}>
+              <div className={styles.phoneCluster}>
+                <PhoneFrame
+                  src="/screenshots/orders.png"
+                  alt="SoloPadi orders screen"
+                />
 
-                <h3>
-                  Everything arrives organized.
-                </h3>
-
-                <p>
-                  See the order information in one place and move it through
-                  your fulfillment workflow instead of searching through
-                  conversations.
-                </p>
-              </div>
-
-              <div className={styles.journeyVisual}>
-                <div className={styles.orderMock}>
-                  <div className={styles.orderMockTop}>
-                    <span>ORDER</span>
-                    <b>#SP-1048</b>
-                  </div>
-
-                  <div className={styles.orderMockRow}>
-                    <span>Customer</span>
-                    <strong>New order</strong>
-                  </div>
-
-                  <div className={styles.orderMockRow}>
-                    <span>Status</span>
-                    <strong className={styles.greenText}>
-                      Processing
-                    </strong>
-                  </div>
+                <div className={styles.clusterCard}>
+                  <span>YOUR ORDERS</span>
+                  <strong>Everything visible.</strong>
                 </div>
               </div>
-            </article>
+            </div>
 
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
+            <div className={styles.workflowCopy}>
+              <div className={styles.stepNumber}>02</div>
+
+              <div className={styles.stepTag}>SEE EVERY ORDER</div>
+
+              <h3>
+                Stop searching
+                <br />
+                through conversations.
+              </h3>
+
+              <p>
+                Your orders have a home. See what needs attention, what's
+                moving, and what has already been delivered from a single
+                business dashboard.
+              </p>
+
+              <div className={styles.featurePoints}>
+                <div>
+                  <span>✓</span>
+                  Centralized orders
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Order status
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Faster follow-up
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          STEP 03 — ORDER DETAILS
+      ========================================================= */}
+      <section className={styles.workflowSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.workflowGrid}>
+            <div className={styles.workflowCopy}>
+              <div className={styles.stepNumber}>03</div>
+
+              <div className={styles.stepTag}>MANAGE THE DETAILS</div>
+
+              <h3>
+                Every important detail
+                <br />
+                stays with the order.
+              </h3>
+
+              <p>
+                Keep the customer's information, products, delivery details,
+                notes, and order status together. Your team spends less time
+                remembering and more time fulfilling.
+              </p>
+
+              <div className={styles.featurePoints}>
+                <div>
+                  <span>✓</span>
+                  Customer information
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Product details
+                </div>
+
+                <div>
+                  <span>✓</span>
+                  Order updates
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.workflowVisual}>
+              <div className={styles.singlePhoneStage}>
+                <PhoneFrame
+                  src="/screenshots/order-details.png"
+                  alt="SoloPadi order details"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================
+          STEP 04 — RIDER
+      ========================================================= */}
+      <section className={`${styles.workflowSection} ${styles.darkSection}`}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.workflowGrid}>
+            <div className={styles.workflowCopy}>
+              <div className={`${styles.stepNumber} ${styles.lightText}`}>
                 04
               </div>
 
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  DELIVERY
-                </div>
-
-                <h3>
-                  Move the order toward your customer.
-                </h3>
-
-                <p>
-                  Manage fulfillment and coordinate delivery so every order
-                  has a clear next step.
-                </p>
+              <div className={`${styles.stepTag} ${styles.greenText}`}>
+                ASSIGN DELIVERY
               </div>
 
-              <div className={styles.journeyVisual}>
-                <div className={styles.deliveryMock}>
-                  <div className={styles.deliveryTrack}>
-                    <span className={styles.activeDot} />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-
-                  <div className={styles.deliveryLabels}>
-                    <span>Prepared</span>
-                    <span>Rider</span>
-                    <span>On the way</span>
-                    <span>Delivered</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
-                05
-              </div>
-
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  CUSTOMER TRACKING
-                </div>
-
-                <h3>
-                  Keep the customer in the loop.
-                </h3>
-
-                <p>
-                  Share a tracking link so customers can see the progress of
-                  their order without needing to ask for an update every
-                  time.
-                </p>
-              </div>
-
-              <div className={styles.journeyVisual}>
-                <div className={styles.trackingMock}>
-                  <div className={styles.trackingHeader}>
-                    <span>SoloPadi</span>
-                    <span>Tracking</span>
-                  </div>
-
-                  <div className={styles.trackingStatus}>
-                    Out for delivery
-                  </div>
-
-                  <div className={styles.trackingSub}>
-                    Your order is on the way.
-                  </div>
-
-                  <div className={styles.trackingProgress}>
-                    <span />
-                    <span />
-                    <span />
-                    <span className={styles.progressActive} />
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className={styles.journeyStep}>
-              <div className={styles.journeyMarker}>
-                06
-              </div>
-
-              <div className={styles.journeyContent}>
-                <div className={styles.journeyLabel}>
-                  DELIVERY CONFIRMED
-                </div>
-
-                <h3>
-                  Close the loop.
-                </h3>
-
-                <p>
-                  Once the order reaches the customer, the delivery journey
-                  is completed with a simple confirmation.
-                </p>
-              </div>
-
-              <div className={styles.journeyVisual}>
-                <div className={styles.completeMock}>
-                  <div className={styles.completeIcon}>
-                    ✓
-                  </div>
-
-                  <strong>Delivered</strong>
-
-                  <span>
-                    Order successfully completed
-                  </span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-
-
-      
-      {/* PRODUCT REVEAL */}
-<section className={styles.productSection}>
-  <div className={styles.productInner}>
-
-    <div className={styles.productHeading}>
-      <div className={styles.productKicker}>
-        ONE ORDER. ONE CLEAR JOURNEY.
-      </div>
-
-      <h2 className={styles.productTitle}>
-        Your customers
-        <span> shouldn’t live inside your inbox.</span>
-      </h2>
-
-      <p className={styles.productDescription}>
-        Once a customer has ordered and payment has been handled,
-        SoloPadi gives you a structured way to collect the remaining
-        details, manage the order, coordinate delivery and keep the
-        customer informed.
-      </p>
-    </div>
-
-   {/* REAL PRODUCT SCREENSHOTS */}
-<div className={styles.productShowcase}>
-
-  <div className={styles.productGlow} />
-
-  <div className={styles.productScreensGrid}>
-
-    {/* ORDERS */}
-    <div className={styles.productPhoneFrame}>
-      <div className={styles.productPhoneScreen}>
-        <img
-          src="/screenshots/orders.png"
-          alt="SoloPadi orders management screen"
-          className={styles.productPhoneImage}
-        />
-      </div>
-    </div>
-
-    {/* RIDER ASSIGNMENT */}
-    <div className={styles.productPhoneFrame}>
-      <div className={styles.productPhoneScreen}>
-        <img
-          src="/screenshots/rider-assignment.png"
-          alt="SoloPadi rider assignment screen"
-          className={styles.productPhoneImage}
-        />
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-    <div className={styles.productFootnote}>
-      <span>01</span>
-
-      <p>
-        Built around the way social sellers already work — not around
-        forcing them into a completely new way of selling.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-            {/* AI BUSINESS INTELLIGENCE */}
-      {/* AI BUSINESS INTELLIGENCE */}
-<section className={styles.aiSection} id="ai">
-  <div className={styles.aiInner}>
-
-    {/* INTRO */}
-    <div className={styles.aiIntro}>
-      <div className={styles.aiKicker}>
-        SOLOPADI INTELLIGENCE
-      </div>
-
-      <h2 className={styles.aiTitle}>
-        Ask your business.
-        <span> Get useful answers.</span>
-      </h2>
-
-      <p className={styles.aiDescription}>
-        SoloPadi AI helps you understand your business through the orders
-        and activity already inside SoloPadi. Ask about orders, customers,
-        products, sales or delivery — and get practical answers without
-        digging through your records yourself.
-      </p>
-    </div>
-
-
-    {/* AI PRODUCT + CONVERSATION */}
-    <div className={styles.aiGrid}>
-
-      {/* =====================================================
-          REAL SOLOPADI AI SCREENSHOT
-          ===================================================== */}
-      <div className={styles.aiProductShowcase}>
-
-        <div className={styles.aiProductGlow} />
-
-        <div className={styles.aiScreenshotFrame}>
-
-          {/* Browser-style top bar */}
-          <div className={styles.aiScreenshotTopbar}>
-
-            <div className={styles.browserDots}>
-              <span />
-              <span />
-              <span />
-            </div>
-
-            <div className={styles.aiBrowserAddress}>
-              app.solopadi.com
-            </div>
-
-          </div>
-
-
-          {/* Real product screenshot */}
-          <div className={styles.aiScreenshotImageWrap}>
-
-            <img
-              src="/screenshots/ai-business.png"
-              alt="SoloPadi AI business assistant"
-              className={styles.aiScreenshotImage}
-            />
-
-          </div>
-
-        </div>
-
-
-        {/* Floating capability card */}
-        <div className={styles.aiFloatingCard}>
-
-          <div className={styles.aiFloatingIcon}>
-            ✦
-          </div>
-
-          <div>
-            <small>
-              ASK SOLOPADI
-            </small>
-
-            <strong>
-              Your business, one conversation away.
-            </strong>
-
-            <span>
-              Ask about orders, customers, sales or delivery.
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      {/* =====================================================
-          AI CONVERSATION
-          ===================================================== */}
-      <div className={styles.aiConversationCard}>
-
-        {/* Header */}
-        <div className={styles.aiCardHeader}>
-
-          <div>
-            <small>
-              SOLOPADI AI
-            </small>
-
-            <strong>
-              Business Assistant
-            </strong>
-          </div>
-
-          <div className={styles.aiSpark}>
-            ✦
-          </div>
-
-        </div>
-
-
-        {/* Conversation */}
-        <div className={styles.aiChatArea}>
-
-          {/* QUESTION 1 */}
-          <div className={styles.aiUserMessage}>
-            Which of my orders are still pending delivery?
-          </div>
-
-
-          {/* ANSWER 1 */}
-          <div className={styles.aiResponse}>
-
-            <div className={styles.aiResponseMark}>
-              S
-            </div>
-
-            <div>
-
-              <strong>
-                Here’s what I found.
-              </strong>
-
-              <p>
-                You currently have
-                <b> 4 orders still awaiting delivery.</b>
-                Two were placed today and two are from yesterday.
-              </p>
-
-
-              <div className={styles.aiMiniInsight}>
-
-                <span>
-                  Needs attention
-                </span>
-
-                <strong>
-                  2 orders
-                </strong>
-
-                <em>
-                  From yesterday
-                </em>
-
-              </div>
-
-
-              <div className={styles.aiMiniInsight}>
-
-                <span>
-                  Out for delivery
-                </span>
-
-                <strong>
-                  2 orders
-                </strong>
-
-                <em>
-                  On the way
-                </em>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* QUESTION 2 */}
-          <div className={styles.aiUserMessage}>
-            How can I improve my sales?
-          </div>
-
-
-          {/* ANSWER 2 */}
-          <div className={styles.aiResponse}>
-
-            <div className={styles.aiResponseMark}>
-              S
-            </div>
-
-            <div>
-
-              <strong>
-                Based on your recent activity:
-              </strong>
-
-              <p>
-                Your strongest products are generating most of your
-                completed orders. Consider promoting those products more
-                consistently and following up with customers who haven't
-                completed their orders.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          {/* SUGGESTED QUESTIONS */}
-          <div className={styles.aiSuggestion}>
-            ✦ Ask about orders, customers, sales or delivery
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    {/* BOTTOM CAPABILITY STATEMENT */}
-    <div className={styles.aiFootnote}>
-
-      <span>
-        04
-      </span>
-
-      <p>
-        From finding an order to understanding your sales performance,
-        SoloPadi AI helps turn your business activity into answers you
-        can actually use.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-      
-
-{/* CUSTOMER EXPERIENCE */}
-<section className={styles.customerSection} id="customer-tracking">
-  <div className={styles.customerInner}>
-
-    <div className={styles.customerIntro}>
-      <div className={styles.customerKicker}>
-        THE CUSTOMER EXPERIENCE
-      </div>
-
-      <h2 className={styles.customerTitle}>
-        Less
-        <span> “where is my order?”</span>
-        <br />
-        More confidence.
-      </h2>
-
-      <p className={styles.customerDescription}>
-        Your customer doesn't need the SoloPadi app. They simply open
-        their tracking link to see what is happening with their order,
-        from confirmation to delivery.
-      </p>
-    </div>
-
-    {/* REAL CUSTOMER TRACKING SCREENSHOT */}
-    <div className={styles.customerShowcase}>
-
-      <div className={styles.customerGlow} />
-
-      <div className={styles.customerScreenshotFrame}>
-
-        <div className={styles.customerBrowserBar}>
-
-          <div className={styles.customerBrowserDots}>
-            <span />
-            <span />
-            <span />
-          </div>
-
-          <div className={styles.customerBrowserAddress}>
-            solopadi.com.ng/track/your-order
-          </div>
-
-        </div>
-
-        <div className={styles.customerScreenshotWrap}>
-          <img
-            src="/screenshots/tracking.PNG"
-            alt="SoloPadi customer order tracking page"
-            className={styles.customerScreenshot}
-          />
-        </div>
-
-      </div>
-
-      {/* FLOATING CUSTOMER MESSAGE */}
-      <div className={styles.customerFloatingCard}>
-
-        <div className={styles.customerFloatingIcon}>
-          ✓
-        </div>
-
-        <div>
-          <small>CUSTOMER EXPERIENCE</small>
-
-          <strong>
-            No app. No account. Just tracking.
-          </strong>
-        </div>
-
-      </div>
-
-    </div>
-
-    {/* CUSTOMER BENEFITS */}
-    <div className={styles.customerBottom}>
-
-      <div className={styles.customerStatement}>
-
-        <span>03</span>
-
-        <div>
-          <small>FOR YOUR CUSTOMERS</small>
-
-          <h3>
-            A better experience
-            <br />
-            without another app.
-          </h3>
-
-          <p>
-            Customers don't need to sign up, download anything or
-            learn a new platform. Their order link does the work.
-          </p>
-        </div>
-
-      </div>
-
-      <div className={styles.customerBenefits}>
-
-        <div>
-          <strong>01</strong>
-          <span>
-            Shareable tracking link
-          </span>
-        </div>
-
-        <div>
-          <strong>02</strong>
-          <span>
-            Clear delivery status
-          </span>
-        </div>
-
-        <div>
-          <strong>03</strong>
-          <span>
-            Simple order confirmation
-          </span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-           
-            {/* EARLY MERCHANT PROGRAMME */}
-      <section className={styles.earlySection} id="early-access">
-        <div className={styles.earlyGlow} />
-
-        <div className={styles.earlyInner}>
-
-          <div className={styles.earlyTop}>
-
-            <div className={styles.earlyKicker}>
-              FOUNDING MERCHANT PROGRAMME
-            </div>
-
-            <div className={styles.earlyNumber}>
-              30
-            </div>
-
-          </div>
-
-          <div className={styles.earlyMain}>
-
-            <div className={styles.earlyCopy}>
-
-              <h2 className={styles.earlyTitle}>
-                Be one of the
+              <h3 className={styles.whiteHeading}>
+                From your order
                 <br />
-                <span>first 30.</span>
-              </h2>
+                to the doorstep.
+              </h3>
 
-              <p className={styles.earlyDescription}>
-                SoloPadi is currently inviting a small group of Nigerian
-                online merchants to experience the platform before public
-                launch.
+              <p className={styles.darkParagraph}>
+                Keep delivery connected to the order. Assign a rider and keep
+                the delivery workflow visible instead of managing everything
+                through separate calls and messages.
               </p>
 
-              <p className={styles.earlyDescriptionSecondary}>
-                You'll get early access, help getting started and a direct
-                opportunity to influence what SoloPadi becomes.
-              </p>
+              <div className={styles.featurePoints}>
+                <div className={styles.lightPoint}>
+                  <span>✓</span>
+                  Rider assignment
+                </div>
 
+                <div className={styles.lightPoint}>
+                  <span>✓</span>
+                  Delivery progress
+                </div>
+
+                <div className={styles.lightPoint}>
+                  <span>✓</span>
+                  One connected workflow
+                </div>
+              </div>
             </div>
 
-            <div className={styles.earlyCard}>
-
-              <div className={styles.earlyCardTop}>
-                <div>
-                  <small>SOLOPADI</small>
-                  <strong>Early Merchant Programme</strong>
-                </div>
-
-                <div className={styles.earlyBadge}>
-                  EARLY ACCESS
-                </div>
+            <div className={styles.workflowVisual}>
+              <div className={styles.darkPhoneStage}>
+                <PhoneFrame
+                  src="/screenshots/rider-assignment.png"
+                  alt="SoloPadi rider assignment"
+                />
               </div>
-
-              <div className={styles.earlyDivider} />
-
-              <div className={styles.earlyBenefits}>
-
-                <div>
-                  <span>01</span>
-                  <p>
-                    Early access to SoloPadi
-                  </p>
-                </div>
-
-                <div>
-                  <span>02</span>
-                  <p>
-                    Personal onboarding support
-                  </p>
-                </div>
-
-                <div>
-                  <span>03</span>
-                  <p>
-                    Help shape future features
-                  </p>
-                </div>
-
-                <div>
-                  <span>04</span>
-                  <p>
-                    Direct feedback channel with the team
-                  </p>
-                </div>
-
-              </div>
-
-              <a
-                href="#apply"
-                className={styles.earlyButton}
-              >
-                Apply for early access
-                <span>↗</span>
-              </a>
-
-              <div className={styles.earlyNote}>
-                <span className={styles.earlyDot} />
-                Applications are reviewed individually.
-              </div>
-
             </div>
-
           </div>
-
-          <div className={styles.earlyBottom}>
-
-            <div>
-              <span>01</span>
-              <p>
-                Apply
-              </p>
-            </div>
-
-            <div>
-              <span>02</span>
-              <p>
-                Get reviewed
-              </p>
-            </div>
-
-            <div>
-              <span>03</span>
-              <p>
-                Get onboarded
-              </p>
-            </div>
-
-            <div>
-              <span>04</span>
-              <p>
-                Start managing orders
-              </p>
-            </div>
-
-          </div>
-
         </div>
       </section>
-            {/* MERCHANT APPLICATION */}
-      <section
-        className={styles.applicationSection}
-        id="apply"
-      >
-        <div className={styles.applicationInner}>
 
-          <div className={styles.applicationHeader}>
-            <div className={styles.applicationKicker}>
-              EARLY MERCHANT APPLICATION
+      {/* =========================================================
+          STEP 05 — CUSTOMER TRACKING
+      ========================================================= */}
+      <section className={styles.trackingSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.centerHeading}>
+            <div className={styles.sectionEyebrow}>
+              <span />
+              CUSTOMER EXPERIENCE
             </div>
 
-            <h2 className={styles.applicationTitle}>
-              Tell us about
+            <h2>
+              No more
               <br />
-              <span>your business.</span>
+              <em>“Where is my order?”</em>
             </h2>
 
-            <p className={styles.applicationDescription}>
-              A few details help us understand your business and how
-              SoloPadi could fit into the way you already sell.
+            <p>
+              Give customers a simple way to follow their order without
+              repeatedly messaging you for updates.
             </p>
           </div>
 
+          <div className={styles.trackingVisual}>
+            <BrowserFrame
+              src="/screenshots/tracking.png"
+              alt="SoloPadi customer order tracking"
+            />
 
-{submitted && (
-  <div className={styles.applicationSuccess}>
-
-    <div className={styles.successIcon}>
-      ✓
-    </div>
-
-    <div>
-      <small>APPLICATION RECEIVED</small>
-
-      <h3>
-        You're on the list.
-      </h3>
-
-      <p>
-        Thank you for applying to the SoloPadi Early Merchant Programme.
-        We'll review your application and contact you with the next steps.
-      </p>
-    </div>
-
-    <button
-      type="button"
-      className={styles.successReset}
-      onClick={() => setSubmitted(false)}
-    >
-      Submit another application ↗
-    </button>
-
-  </div>
-)}
-
-          {!submitted && (
-  <form
-    className={styles.applicationForm}
-  onSubmit={async (event) => {
-    event.preventDefault();
-
-    setIsSubmitting(true);
-    setSubmitError("");
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    const payload = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch("/api/apply", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          result.error || "Unable to submit application."
-        );
-      }
-
-      setSubmitted(true);
-      form.reset();
-    } catch (error) {
-      console.error(error);
-
-      setSubmitError(
-        "We couldn't submit your application. Please try again."
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
-  }}
->
-
-            <div className={styles.formProgress}>
-              <div>
-                <span>01</span>
-                <p>BUSINESS</p>
-              </div>
+            <div className={styles.trackingBadge}>
+              <div className={styles.trackingBadgeIcon}>✓</div>
 
               <div>
-                <span>02</span>
-                <p>OPERATIONS</p>
-              </div>
-
-              <div>
-                <span>03</span>
-                <p>CONTACT</p>
+                <span>CUSTOMER VIEW</span>
+                <strong>Clear. Simple. Reassuring.</strong>
               </div>
             </div>
-
-            <div className={styles.formSection}>
-
-              <div className={styles.formSectionTitle}>
-                <span>01</span>
-
-                <div>
-                  <small>YOUR BUSINESS</small>
-                  <h3>Let's start with the basics.</h3>
-                </div>
-              </div>
-
-              <div className={styles.formGrid}>
-
-                <label className={styles.formField}>
-                  <span>Full name</span>
-
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="e.g. Daniel Okafor"
-                    required
-                  />
-                </label>
-
-                <label className={styles.formField}>
-                  <span>Business name</span>
-
-                  <input
-                    type="text"
-                    name="businessName"
-                    placeholder="e.g. Daniel's Fashion"
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.formField} ${styles.formFieldFull}`}
-                >
-                  <span>What do you sell?</span>
-
-                  <select
-                    name="businessType"
-                    defaultValue=""
-                    required
-                  >
-                    <option value="" disabled>
-                      Select your business type
-                    </option>
-                    <option value="fashion">
-                      Fashion & clothing
-                    </option>
-                    <option value="beauty">
-                      Beauty & cosmetics
-                    </option>
-                    <option value="food">
-                      Food & food products
-                    </option>
-                    <option value="electronics">
-                      Electronics & gadgets
-                    </option>
-                    <option value="home">
-                      Home & lifestyle
-                    </option>
-                    <option value="services">
-                      Services
-                    </option>
-                    <option value="other">
-                      Other
-                    </option>
-                  </select>
-                </label>
-
-              </div>
-
-            </div>
-
-            <div className={styles.formSection}>
-
-              <div className={styles.formSectionTitle}>
-                <span>02</span>
-
-                <div>
-                  <small>YOUR OPERATIONS</small>
-                  <h3>Help us understand your workflow.</h3>
-                </div>
-              </div>
-
-              <div className={styles.formGrid}>
-
-                <label className={styles.formField}>
-                  <span>Orders per week</span>
-
-                  <select
-                    name="ordersPerWeek"
-                    defaultValue=""
-                    required
-                  >
-                    <option value="" disabled>
-                      Select an estimate
-                    </option>
-                    <option value="1-10">1 – 10</option>
-                    <option value="11-30">11 – 30</option>
-                    <option value="31-50">31 – 50</option>
-                    <option value="51-100">51 – 100</option>
-                    <option value="100+">100+</option>
-                  </select>
-                </label>
-
-                <label className={styles.formField}>
-                  <span>Main sales channel</span>
-
-                  <select
-                    name="salesChannel"
-                    defaultValue=""
-                    required
-                  >
-                    <option value="" disabled>
-                      Where do you sell?
-                    </option>
-                    <option value="whatsapp">
-                      WhatsApp
-                    </option>
-                    <option value="instagram">
-                      Instagram
-                    </option>
-                    <option value="tiktok">
-                      TikTok
-                    </option>
-                    <option value="facebook">
-                      Facebook
-                    </option>
-                    <option value="multiple">
-                      Multiple platforms
-                    </option>
-                  </select>
-                </label>
-
-                <label
-                  className={`${styles.formField} ${styles.formFieldFull}`}
-                >
-                  <span>
-                    What is the biggest challenge you face after getting an
-                    order?
-                  </span>
-
-                  <textarea
-                    name="challenge"
-                    rows={4}
-                    placeholder="Tell us what usually happens after a customer places an order..."
-                    required
-                  />
-                </label>
-
-              </div>
-
-            </div>
-
-            <div className={styles.formSection}>
-
-              <div className={styles.formSectionTitle}>
-                <span>03</span>
-
-                <div>
-                  <small>HOW WE REACH YOU</small>
-                  <h3>One last thing.</h3>
-                </div>
-              </div>
-
-              <div className={styles.formGrid}>
-
-                <label className={styles.formField}>
-                  <span>Email address</span>
-
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                  />
-                </label>
-
-                <label className={styles.formField}>
-                  <span>WhatsApp / phone number</span>
-
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+234..."
-                    required
-                  />
-                </label>
-
-                <label
-                  className={`${styles.formField} ${styles.formFieldFull}`}
-                >
-                  <span>
-                    Your business link
-                    <em>optional</em>
-                  </span>
-
-                  <input
-                    type="url"
-                    name="businessLink"
-                    placeholder="https://instagram.com/yourbusiness"
-                  />
-                </label>
-
-              </div>
-
-            </div>
-
-            <div className={styles.formSubmitArea}>
-
-              <div className={styles.formPrivacy}>
-                <span>✓</span>
-
-                <p>
-                  Your information is used only to review your application
-                  and contact you about the SoloPadi Early Merchant Programme.
-                </p>
-              </div>
-
-              <button
-  type="submit"
-  className={styles.applicationButton}
-  disabled={isSubmitting}
->
-  {isSubmitting ? "Submitting application..." : "Submit application"}
-
-  <span>
-    {isSubmitting ? "…" : "↗"}
-  </span>
-</button>
-
-{submitError && (
-  <p className={styles.formError}>
-    {submitError}
-  </p>
-)}
-
-            </div>
-
-          </form>
-          )}
-
+          </div>
         </div>
       </section>
-      {/* ==================== FOOTER ==================== */}
 
-<footer className={styles.footer}>
+      {/* =========================================================
+          STEP 06 — ORDER CONFIRMATION
+      ========================================================= */}
+      <section className={`${styles.workflowSection} ${styles.softSection}`}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.workflowGrid}>
+            <div className={styles.workflowCopy}>
+              <div className={styles.stepNumber}>06</div>
 
-  <div className={styles.footerInner}>
+              <div className={styles.stepTag}>CLOSE THE LOOP</div>
 
-    {/* Top CTA */}
-    <div className={styles.footerCta}>
+              <h3>
+                A better experience
+                <br />
+                from start to finish.
+              </h3>
 
-      <div className={styles.footerCtaCopy}>
-        <span className={styles.footerEyebrow}>
-          EARLY MERCHANT PROGRAMME
-        </span>
+              <p>
+                Keep the customer journey clear after the sale, from order
+                confirmation through fulfilment and delivery.
+              </p>
 
-        <h2>
-          Build the business
-          <br />
-          <span>behind the sale.</span>
-        </h2>
+              <div className={styles.featurePoints}>
+                <div>
+                  <span>✓</span>
+                  Order confirmation
+                </div>
 
-        <p>
-          Sell where your customers already are.
-          Manage everything that happens after the sale.
-        </p>
-      </div>
+                <div>
+                  <span>✓</span>
+                  Customer confidence
+                </div>
 
-      <a
-  href="#apply"
-  className={styles.footerCtaButton}
+                <div>
+                  <span>✓</span>
+                  Professional experience
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.workflowVisual}>
+              <BrowserFrame
+                src="/screenshots/order-confirmation.png"
+                alt="SoloPadi order confirmation"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+      {/* =========================================================
+          AI BUSINESS
+      ========================================================= */}
+      <section id="ai-business" className={styles.aiSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.aiGrid}>
+            <div className={styles.aiCopy}>
+              <div className={`${styles.sectionEyebrow} ${styles.greenEyebrow}`}>
+                <span />
+                AI BUSINESS
+              </div>
+
+              <h2>
+                Your business gets
+                <br />
+                <em>a smarter second brain.</em>
+              </h2>
+
+              <p>
+                SoloPadi AI helps you make sense of your business activity and
+                turn it into practical next steps. Ask questions about your
+                orders, customers, products, and performance instead of
+                guessing what to do next.
+              </p>
+
+              <div className={styles.aiQuestions}>
+                <div>How did my business perform this week?</div>
+                <div>Which products are getting the most orders?</div>
+                <div>What should I focus on this week?</div>
+                <div>Why did my orders change?</div>
+              </div>
+            </div>
+
+            <div className={styles.aiVisual}>
+              <div className={styles.aiGlow} />
+
+              <PhoneFrame
+                src="/screenshots/ai-business.png"
+                alt="SoloPadi AI Business assistant"
+                className={styles.aiPhone}
+              />
+
+              <div className={styles.aiFloatingCard}>
+                <div className={styles.aiPulse} />
+                <div>
+                  <span>BUSINESS INTELLIGENCE</span>
+                  <strong>Ask. Understand. Act.</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          FEATURES
+      ========================================================= */}
+      <section id="features" className={styles.featuresSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.featuresHeader}>
+            <div>
+              <div className={styles.sectionEyebrow}>
+                <span />
+                ONE SYSTEM
+              </div>
+
+              <h2>
+                Everything you need
+                <br />
+                <em>after the sale.</em>
+              </h2>
+            </div>
+
+            <p>
+              SoloPadi brings the operational side of your business together
+              without asking you to abandon the platforms where you already
+              sell.
+            </p>
+          </div>
+
+          <div className={styles.featureGrid}>
+            <div className={`${styles.featureCard} ${styles.featureCardLarge}`}>
+              <div className={styles.featureIndex}>01</div>
+
+              <div className={styles.featureIcon}>↗</div>
+
+              <h3>Order Management</h3>
+
+              <p>
+                Keep every order organized from the moment it is captured to
+                the moment it is delivered.
+              </p>
+
+              <div className={styles.featureMiniVisual}>
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>02</div>
+              <div className={styles.featureIcon}>◎</div>
+
+              <h3>Customer Information</h3>
+
+              <p>
+                Keep important customer and delivery details connected to the
+                order.
+              </p>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>03</div>
+              <div className={styles.featureIcon}>⌁</div>
+
+              <h3>Delivery Management</h3>
+
+              <p>
+                Assign riders and keep delivery progress connected to the
+                original order.
+              </p>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>04</div>
+              <div className={styles.featureIcon}>◌</div>
+
+              <h3>Customer Tracking</h3>
+
+              <p>
+                Give customers a clear view of their order without constant
+                “where is my order?” messages.
+              </p>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>05</div>
+              <div className={styles.featureIcon}>✓</div>
+
+              <h3>Order Confirmation</h3>
+
+              <p>
+                Create a cleaner, more professional customer experience after
+                the sale.
+              </p>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>06</div>
+              <div className={styles.featureIcon}>▦</div>
+
+              <h3>Business Dashboard</h3>
+
+              <p>
+                Get a clearer view of what's happening across your orders and
+                operations.
+              </p>
+            </div>
+
+            <div className={`${styles.featureCard} ${styles.featureCardGreen}`}>
+              <div className={styles.featureIndex}>07</div>
+              <div className={styles.featureIcon}>✦</div>
+
+              <h3>AI Business</h3>
+
+              <p>
+                Turn your business activity into useful insights and practical
+                decisions.
+              </p>
+
+              <div className={styles.aiCardOrb}>
+                <span>AI</span>
+              </div>
+            </div>
+
+            <div className={styles.featureCard}>
+              <div className={styles.featureIndex}>08</div>
+              <div className={styles.featureIcon}>S</div>
+
+              <h3>Vendor Profile</h3>
+
+              <p>
+                Build a recognizable business presence and keep your business
+                information organized.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          SALES CHANNELS
+      ========================================================= */}
+      <section className={styles.channelsSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.channelsLayout}>
+            <div className={styles.channelsCopy}>
+              <div className={styles.sectionEyebrow}>
+                <span />
+                YOUR SALES CHANNELS
+              </div>
+
+              <h2>
+                Keep selling
+                <br />
+                <em>where your customers are.</em>
+              </h2>
+
+              <p>
+                SoloPadi doesn't replace WhatsApp, Instagram, TikTok, or your
+                existing sales process. It gives you a better system for
+                everything that happens after payment.
+              </p>
+
+              <div className={styles.channelPills}>
+                <span>WhatsApp</span>
+                <span>Instagram</span>
+                <span>TikTok</span>
+                <span>Phone</span>
+                <span>Social commerce</span>
+              </div>
+            </div>
+
+            <div className={styles.channelVisual}>
+              <div className={styles.channelOrbit}>
+                <div className={styles.orbitCenter}>
+                  <Image
+                    src="/screenshots/solopadi_logo.png"
+                    alt="SoloPadi"
+                    width={62}
+                    height={62}
+                  />
+                </div>
+
+                <div className={`${styles.orbitItem} ${styles.orbitOne}`}>
+                  WhatsApp
+                </div>
+
+                <div className={`${styles.orbitItem} ${styles.orbitTwo}`}>
+                  Instagram
+                </div>
+
+                <div className={`${styles.orbitItem} ${styles.orbitThree}`}>
+                  TikTok
+                </div>
+
+                <div className={`${styles.orbitItem} ${styles.orbitFour}`}>
+                  Phone
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          PAYMENT CLARIFICATION
+      ========================================================= */}
+      <section className={styles.paymentSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.paymentCard}>
+            <div className={styles.paymentBadge}>
+              <span>✓</span>
+              YOUR PAYMENT STAYS YOURS
+            </div>
+
+            <div className={styles.paymentGrid}>
+              <div>
+                <h2>
+                  SoloPadi doesn't
+                  <br />
+                  <em>hold your money.</em>
+                </h2>
+              </div>
+
+              <div className={styles.paymentCopy}>
+                <p>
+                  You and your customer continue using your existing payment
+                  method. SoloPadi does not process, collect, or hold customer
+                  payments.
+                </p>
+
+                <p>
+                  Once payment is settled, SoloPadi takes over the workflow
+                  that comes next — order details, delivery, tracking,
+                  confirmation, and business management.
+                </p>
+
+                <div className={styles.paymentFlow}>
+                  <span>Customer</span>
+                  <b>→</b>
+                  <span>Your payment method</span>
+                  <b>→</b>
+                  <strong>SoloPadi workflow</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          WHO IT'S FOR
+      ========================================================= */}
+      <section className={styles.industrySection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.centerHeading}>
+            <div className={styles.sectionEyebrow}>
+              <span />
+              BUILT FOR BUSINESSES THAT SELL
+            </div>
+
+            <h2>
+              If you sell online,
+              <br />
+              <em>SoloPadi fits your workflow.</em>
+            </h2>
+
+            <p>
+              Whether you are running a growing social-commerce business or
+              managing orders every day, SoloPadi helps bring structure to the
+              work behind the sale.
+            </p>
+          </div>
+
+          <div className={styles.industryGrid}>
+            <div>Fashion</div>
+            <div>Beauty</div>
+            <div>Food</div>
+            <div>Accessories</div>
+            <div>Electronics</div>
+            <div>Home & lifestyle</div>
+            <div>Small retail</div>
+            <div>Social commerce</div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
+      <section id="faq" className={styles.faqSection}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.faqGrid}>
+            <div className={styles.faqHeading}>
+              <div className={styles.sectionEyebrow}>
+                <span />
+                QUESTIONS
+              </div>
+
+              <h2>
+                Good questions.
+                <br />
+                <em>Clear answers.</em>
+              </h2>
+
+              <p>
+                Everything you need to know before getting started with
+                SoloPadi.
+              </p>
+            </div>
+
+            <div className={styles.faqList}>
+              <details open>
+                <summary>
+                  What is SoloPadi?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  SoloPadi is a business management app for sellers who take
+                  orders through social media, messaging, phone calls, and
+                  other existing sales channels. It helps manage what happens
+                  after a customer has paid.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Does SoloPadi process payments?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  No. SoloPadi does not process, collect, or hold customer
+                  payments. You continue using your existing payment method.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Do I need to stop using WhatsApp?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  No. Keep selling wherever your customers are. SoloPadi is
+                  designed to organize the workflow that comes after payment.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Does my customer need the SoloPadi app?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  Customers can use the web links you share with them for
+                  order information, confirmation, and tracking. They do not
+                  need to manage your business from the merchant app.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Can customers track their orders?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  Yes. SoloPadi provides a customer-facing tracking experience
+                  so customers can see the progress of their order.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Can I manage riders?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  Yes. SoloPadi includes delivery workflow features that help
+                  you assign riders and keep delivery progress connected to
+                  orders.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  What does SoloPadi AI do?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  AI Business helps you understand your business activity and
+                  answer practical questions about orders, performance,
+                  products, and areas that may need attention.
+                </p>
+              </details>
+
+              <details>
+                <summary>
+                  Where can I download SoloPadi?
+                  <span>+</span>
+                </summary>
+
+                <p>
+                  SoloPadi is available on Google Play for Android devices.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          FINAL CTA
+      ========================================================= */}
+      <section className={styles.finalCta}>
+        <div className={styles.finalGlow} />
+
+        <div className={styles.finalContent}>
+          <div className={styles.finalLogo}>
+            <Image
+              src="/screenshots/solopadi_logo.png"
+              alt="SoloPadi"
+              width={60}
+              height={60}
+            />
+          </div>
+
+          <div className={styles.finalEyebrow}>
+            SOLOPADI
+          </div>
+
+          <h2>
+            You already have customers.
+            <br />
+            <span>You already have orders.</span>
+          </h2>
+
+          <p>
+            Now organize what happens next.
+          </p>
+
+          
+<a 
+  href={GOOGLE_PLAY_URL} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className={styles.finalButton} 
 >
-  <span className={styles.ctaDesktop}>
-    Join the Early Merchant Programme
-  </span>
+  <Image
+    src="/screenshots/playstore-icon.png"
+    alt=""
+    width={28}
+    height={28}
+    className={styles.playStoreIcon}
+  />
 
-  <span className={styles.ctaMobile}>
-    Join Early Access
-  </span>
-
-  <span className={styles.ctaArrow}>↗</span>
+  <span>Download SoloPadi</span>
+  <b>↗</b>
 </a>
 
-    </div>
+
+          <div className={styles.finalAvailable}>
+            Available now on Google Play
+          </div>
+        </div>
+      </section>
 
 
-    {/* Footer navigation */}
-    <div className={styles.footerMain}>
+      {/* =========================================================
+          FOOTER
+      ========================================================= */}
+      <footer className={styles.footer}>
+        <div className={styles.footerInner}>
+          <div className={styles.footerBrand}>
+            <div className={styles.footerBrandTop}>
+              <Image
+                src="/screenshots/solopadi_logo.png"
+                alt="SoloPadi"
+                width={38}
+                height={38}
+              />
 
-      {/* Brand */}
-      <div className={styles.footerBrand}>
+              <strong>SoloPadi</strong>
+            </div>
 
-        <a href="/" className={styles.footerLogo}>
-          <span className={styles.footerLogoMark}>
-            S
-          </span>
+            <p>
+              Sell where your customers are.
+              <br />
+              Manage everything after payment.
+            </p>
 
-          <span>
-            SoloPadi
-          </span>
-        </a>
+            <a href="mailto:admin@solopadi.com.ng">
+              admin@solopadi.com.ng
+            </a>
+          </div>
 
-        <p>
-          Sell where your customers already are.
-          Manage everything that happens after the sale.
-        </p>
+          <div className={styles.footerLinks}>
+            <div>
+              <span>PRODUCT</span>
+              <a href="#how-it-works">How it works</a>
+              <a href="#features">Features</a>
+              <a href="#ai-business">AI Business</a>
+              <a href="#faq">FAQ</a>
+            </div>
 
-        <a
-          href="mailto:admin@solopadi.com.ng"
-          className={styles.footerEmail}
-        >
-          admin@solopadi.com.ng
-        </a>
+            <div>
+              <span>LEGAL</span>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+              <Link href="/terms">Terms</Link>
+              <Link href="/delete-account">Delete Account</Link>
+            </div>
 
-      </div>
+            
+<div>
+  <span>GET SOLOPADI</span>
+  <a 
+    href={GOOGLE_PLAY_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.footerPlayLink}
+  >
+    <Image
+      src="/screenshots/playstore-icon.png"
+      alt=""
+      width={20}
+      height={20}
+      className={styles.playStoreIconSmall}
+    />
+    Google Play ↗
+  </a>
+</div>
 
+          </div>
+        </div>
 
-      {/* Product */}
-      <div className={styles.footerColumn}>
-
-        <span className={styles.footerColumnTitle}>
-          Product
-        </span>
-
-        <a href="#how-it-works">
-          How it works
-        </a>
-
-        <a href="#ai">
-          AI for business
-        </a>
-
-        <a href="#customer-tracking">
-          Customer tracking
-        </a>
-
-        <a href="#apply">
-          Early Merchant Programme
-        </a>
-
-      </div>
-
-
-      {/* Company */}
-      <div className={styles.footerColumn}>
-
-        <span className={styles.footerColumnTitle}>
-          Company
-        </span>
-
-        <a href="#about">
-          About SoloPadi
-        </a>
-
-        <a href="mailto:admin@solopadi.com.ng">
-          Contact
-        </a>
-
-      </div>
-
-
-      {/* Legal */}
-      <div className={styles.footerColumn}>
-
-        <span className={styles.footerColumnTitle}>
-          Legal
-        </span>
-
-        <a href="/privacy-policy">
-          Privacy Policy
-        </a>
-
-        <a href="/terms">
-          Terms of Service
-        </a>
-
-        <a href="/delete-account">
-          Delete Account
-        </a>
-
-      </div>
-
-    </div>
+        <div className={styles.footerBottom}>
+          <span>© 2026 SoloPadi. All rights reserved.</span>
+          <span>Built for modern sellers.</span>
+        </div>
+      </footer>
 
 
-    {/* Bottom bar */}
-    <div className={styles.footerBottom}>
-
-      <p>
-        © 2026 SoloPadi. Built for modern Nigerian businesses.
-      </p>
-
-      <div className={styles.footerBottomRight}>
-        <span>
-          Made for commerce after the sale.
-        </span>
-
-        <span className={styles.footerStatus}>
-          <i />
-          Early access
-        </span>
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
     </main>
   );
 }
