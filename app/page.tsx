@@ -327,7 +327,7 @@ export default function HomePage() {
 
             <div className={styles.workflowVisual}>
               <BrowserFrame
-                src="/screenshots/store-order-form.png"
+                src="/screenshots/store-order-form.PNG"
                 alt="SoloPadi customer order form"
               />
             </div>
@@ -528,7 +528,7 @@ export default function HomePage() {
 
           <div className={styles.trackingVisual}>
             <BrowserFrame
-              src="/screenshots/tracking.png"
+              src="/screenshots/tracking.PNG"
               alt="SoloPadi customer order tracking"
             />
 
@@ -586,7 +586,7 @@ export default function HomePage() {
 
             <div className={styles.workflowVisual}>
               <BrowserFrame
-                src="/screenshots/order-confirmation.png"
+                src="/screenshots/order-confirmation.PNG"
                 alt="SoloPadi order confirmation"
               />
             </div>
